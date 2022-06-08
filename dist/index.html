@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
-</head>
-<body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
-  <script src="bundle.js"></script>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,700;1,400&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Tracker</title>
+  </head>
+  <body>
+    <main>
+      <h1>Travel Tracker</h1>
+      <img src="./images/world-travel-logo.png" alt="plane traveling globe logo">
+      <form>
+        <label class="" id="">Date:</label><br>
+        <input class="" id="" type="date" placeholder="dd/mm/yyyy" required><br>
+        <label class="" id="">Number of Days:</label><br>
+        <input class="" id="" type="" placeholder="0" required><br>
+        <label class="" id="">Number of Travelers:</label><br>
+        <input class="" id="" type="number" placeholder="0" required><br><br>
+        <input class="" id="" type="submit" value="Submit">
+      </form>
+    </main>
+    
+    <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
+    <script src="bundle.js"></script>
 
-</body>
+  </body>
 </html>
