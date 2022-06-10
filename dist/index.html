@@ -8,16 +8,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,700;1,400&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Tracker</title>
-  </head>
+  </head> 
   <body>
     <main>
       <h1>Travel Tracker</h1>
-      <img src="./images/world-travel-logo.png" alt="plane traveling globe logo">
+      <img class="logo" src="./images/world-travel-logo.png" alt="plane traveling globe logo">
+      <h2>Welcome, name! 👋</h2>
+      <h3>🤑 You've spent $_____ so far 🤑</h3>
+      <section>
+        <h4>Your Trips</h4>
+          <section>Past Trips</section>
+            <div>
+              <img class="cappadocia" src="./images/Cappadocia.jpg" alt="Cappadocia, Turkey photo">
+            </div>
+          <section>Present Trips</section>
+            <div>
+              <img class="cappadocia" src="./images/Cappadocia.jpg" alt="Cappadocia, Turkey photo">
+            </div>
+          <section>Upcoming Trips</section>
+            <div>
+              <img class="cappadocia" src="./images/Cappadocia.jpg" alt="Cappadocia, Turkey photo">
+            </div>
+          <section>Pending Trips</section>
+            <div>
+              <img class="cappadocia" src="./images/Cappadocia.jpg" alt="Cappadocia, Turkey photo">
+            </div>
+      </section>
       <form>
+        <h5>MAKE A REQUEST</h5><br>
         <label class="" id="">Date:</label><br>
         <input class="" id="" type="date" placeholder="dd/mm/yyyy" required><br>
         <label class="" id="">Number of Days:</label><br>
-        <input class="" id="" type="" placeholder="0" required><br>
+        <input class="" id="" type="number" placeholder="0" required><br>
         <label class="" id="">Number of Travelers:</label><br>
         <input class="" id="" type="number" placeholder="0" required><br>
         <label class="" id="">Destinations:</label><br>
@@ -27,9 +49,12 @@
           <option value="saab">Saab</option>
           <option value="mercedes">Mercedes</option>
           <option value="audi">Audi</option>
-        </select><br>
-        <input class="" id="" type="submit" value="Submit">
+        </select><br><br>
+        <input class="" id="" type="submit" value="Get Estimate">
       </form>
+      <h6>Trip Request's Estimate is $_______*<br>
+        <span>*including 10% travel agent fee</span>
+      </h6>
     </main>
     
     <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
