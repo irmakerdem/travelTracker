@@ -23,7 +23,6 @@ describe('Trip', () => {
   it('should be able to take in trip data', () => {
     expect(trip1.data).to.be.an('array');
     expect(trip1.data).to.deep.equal(tripData);
-
   });
 
   it('should be able to test whether the traveler id is valid and also return a message if it\'s not valid', () => {

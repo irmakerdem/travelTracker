@@ -15,7 +15,7 @@ class Trip {
   }
 
   getTripDataById(id) {
-    let tripData = this.data.filter(tripInfo => tripInfo.userID === id)
+    let tripData = this.data.filter(tripInfo => tripInfo.userID === id);
     if (tripData.length === 0) {
       return 'Invalid ID!';
     }
@@ -45,31 +45,14 @@ class Trip {
     }, 0);
     return yearlyCost;
   }
-
-    //filter array of trip data to only include trips that have date within last yr
-    //find current date
-    //create new Date(currentDate - 1yr) 
-    //inside filter: return all trips where trip.date(JS date format aka new Date) > 1 yr ago
-    //split at dash
-    // convert yr from 4 char into 2 char??
-
-  // getTripsWithinLastYear() {
-  //   this.data.filter((currentTrip) => {
-  //     console.log(currentTrip)
-  //     this.data.date = new Date()
-  //     if(this.data.date) {
-        
-  //     }
-  //   })
-  // }
-
-//   sortAllTrips(travelerData) {
-//     //make an empty trips array in traveler?
-//     const sortedTrips = travelerData.trips.sort((tripA, tripB) => {
-//       return new Date(tripB.date) - new Date(tripA.date)
-//     })
-//     travelerData.trips = sortedTrips;
-// }
+  
+  formatDate(day) {
+    let dd = String(day.getDate()).padStart(2, '0');
+    let mm = String(day.getMonth() + 1).padStart(2, '0');
+    let yyyy = day.getFullYear();
+    let formattedDay = yyyy + '/' + mm + '/' + dd;
+    return formattedDay;
+  }
 
   getPastTrips(travellerTrips) {
     const todaysDate = new Date();
@@ -78,24 +61,6 @@ class Trip {
     const pastTrips = travellerTrips.filter(trip => trip.date < formatTodaysDate);
 
     return pastTrips;
-  }
-
-  // formatDatesList(daylist) {
-  //   let formattedDaylist = daylist.map(day => {
-  //     let dd = String(day.getDate()).padStart(2, '0');
-  //     let mm = String(day.getMonth() + 1).padStart(2, '0');
-  //     let yyyy = day.getFullYear();
-  //     return day = yyyy + '/' + mm + '/' + dd;
-  //   })
-  //     return formattedDaylist;
-  // }
-  
-  formatDate(day) {
-    let dd = String(day.getDate()).padStart(2, '0');
-    let mm = String(day.getMonth() + 1).padStart(2, '0');
-    let yyyy = day.getFullYear();
-    let formattedDay = yyyy + '/' + mm + '/' + dd;
-    return formattedDay;
   }
 
   getUpcomingTrips(travellerTrips) {
@@ -122,5 +87,41 @@ class Trip {
     return presentTrips;
   }
 }
+
+
+    //filter array of trip data to only include trips that have date within last yr
+    //find current date
+    //create new Date(currentDate - 1yr) 
+    //inside filter: return all trips where trip.date(JS date format aka new Date) > 1 yr ago
+    //split at dash
+    // convert yr from 4 char into 2 char??
+
+  // getTripsWithinLastYear() {
+  //   this.data.filter((currentTrip) => {
+  //     console.log(currentTrip)
+  //     this.data.date = new Date()
+  //     if(this.data.date) {
+        
+  //     }
+  //   })
+  // }
+
+//   sortAllTrips(travelerData) {
+//     //make an empty trips array in traveler?
+//     const sortedTrips = travelerData.trips.sort((tripA, tripB) => {
+//       return new Date(tripB.date) - new Date(tripA.date)
+//     })
+//     travelerData.trips = sortedTrips;
+// }
+
+  // formatDatesList(daylist) {
+  //   let formattedDaylist = daylist.map(day => {
+  //     let dd = String(day.getDate()).padStart(2, '0');
+  //     let mm = String(day.getMonth() + 1).padStart(2, '0');
+  //     let yyyy = day.getFullYear();
+  //     return day = yyyy + '/' + mm + '/' + dd;
+  //   })
+  //     return formattedDaylist;
+  // }
 
 export default Trip;
