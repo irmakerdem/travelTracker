@@ -240,4 +240,22 @@ describe('Trip', () => {
     ]);
   });
 
+  it('should be able to get present trips', () => {
+    let miniTripData = tripData.filter((tripy, index) => index < 20);
+
+    expect(trip1.getPresentTrips(miniTripData)).to.be.an('array');
+    expect(trip1.getPresentTrips(miniTripData)).to.deep.equal([
+      {
+        "id": 15,
+        "userID": 50,
+        "destinationID": 13,
+        "travelers": 3,
+        "date": "2022/06/12",
+        "duration": 6,
+        "status": "approved",
+        "suggestedActivities": []
+      },
+    ]);
+  });
+
 });

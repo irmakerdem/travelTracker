@@ -108,13 +108,19 @@ class Trip {
   }
 
   getPendingTrips(travellerTrips) {
-    const pendingTrips = travellerTrips.filter(trip => trip.status === "pending")
+    const pendingTrips = travellerTrips.filter(trip => trip.status === "pending");
 
     return pendingTrips;
   }
 
-  getPresentTrips() {
-    //leave to end
+  getPresentTrips(travellerTrips) {
+    const todaysDate = new Date();
+    const formatTodaysDate = this.formatDate(todaysDate);
+
+    const presentTrips = travellerTrips.filter(trip => trip.date === formatTodaysDate);
+ 
+    return presentTrips;
   }
 }
+
 export default Trip;
