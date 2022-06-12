@@ -222,20 +222,118 @@ describe('Trip', () => {
     ]);
   });
 
-  it('should be able to get pending trips', () => {
-    let miniTripData = tripData.filter((tripy, index) => index < 75);
+  // it('should be able to get pending trips', () => {
+  //   // let miniTripData = tripData.filter((tripy, index) => index < 75);
 
-    expect(trip1.getPendingTrips(miniTripData)).to.be.an('array');
-    expect(trip1.getPendingTrips(miniTripData)).to.deep.equal([
+  //   expect(trip1.getPendingTrips()).to.be.an('array');
+  //   expect(trip1.getPendingTrips()).to.deep.equal([
+  //     {
+  //       "date": "2020/05/26",
+  //       "destinationID": 28,
+  //       "duration": 11,
+  //       "id": 71,
+  //       "status": "pending",
+  //       "suggestedActivities": [],
+  //       "travelers": 1,
+  //       "userID": 38,
+  //     },
+  //     {
+  //       "date": "2020/05/06",
+  //       "destinationID": 26,
+  //       "duration": 11,
+  //       "id": 83,
+  //       "status": "pending",
+  //       "suggestedActivities": [],
+  //       "travelers": 1,
+  //       "userID": 47,
+  //     },
+  //     {
+  //       "date": "2020/11/23",
+  //       "destinationID": 1,
+  //       "duration": 19,
+  //       "id": 84,
+  //       "status": "pending",
+  //       "suggestedActivities": [],
+  //       "travelers": 1,
+  //       "userID": 7,
+  //     },
+  //     {
+  //       "date": "2020/10/6",
+  //       "destinationID": 12,
+  //       "duration": 16,
+  //       "id": 98,
+  //       "status": "pending",
+  //       "suggestedActivities": [],
+  //       "travelers": 6,
+  //       "userID": 7,
+  //     },
+  //     {
+  //       "date": "2020/09/07",
+  //       "destinationID": 30,
+  //       "duration": 5,
+  //       "id": 132,
+  //       "status": "pending",
+  //       "suggestedActivities": [],
+  //       "travelers": 5,
+  //       "userID": 42,
+  //     },
+  //     {
+  //       "date": "2020/10/29",
+  //       "destinationID": 22,
+  //       "duration": 18,
+  //       "id": 138,
+  //       "status": "pending",
+  //       "suggestedActivities": [],
+  //       "travelers": 3,
+  //       "userID": 25,
+  //     },
+  //     {
+  //       "date": "2020/12/27",
+  //       "destinationID": 43,
+  //       "duration": 18,
+  //       "id": 171,
+  //       "status": "pending",
+  //       "suggestedActivities": [],
+  //       "travelers": 1,
+  //       "userID": 2,
+  //     },
+  //     {
+  //       "date": "2020/09/06",
+  //       "destinationID": 14,
+  //       "duration": 12,
+  //       "id": 180,
+  //       "status": "pending",
+  //       "suggestedActivities": [],
+  //       "travelers": 1,
+  //       "userID": 48,
+  //     },
+  //     {
+  //       "date": "2020/05/17",
+  //       "destinationID": 39,
+  //       "duration": 6,
+  //       "id": 199,
+  //       "status": "pending",
+  //       "suggestedActivities": [],
+  //       "travelers": 6,
+  //       "userID": 45,
+  //     }
+  //   ]);
+  // });
+
+  it('should be able to get pending trips', () => {
+    let userTrips = trip1.getTripDataById(45);
+
+    expect(trip1.getPendingTrips(userTrips)).to.be.an('array');
+    expect(trip1.getPendingTrips(userTrips)).to.deep.equal([
       {
-        "date": "2020/05/26",
-        "destinationID": 28,
-        "duration": 11,
-        "id": 71,
+        "date": "2020/05/17",
+        "destinationID": 39,
+        "duration": 6,
+        "id": 199,
         "status": "pending",
         "suggestedActivities": [],
-        "travelers": 1,
-        "userID": 38,
+        "travelers": 6,
+        "userID": 45,
       }
     ]);
   });
