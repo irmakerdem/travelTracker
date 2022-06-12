@@ -355,4 +355,10 @@ describe('Trip', () => {
     ]);
   });
 
+  it('should be able to calculate total cost of a single trip', () => {
+    expect(testDestination1Data).to.be.an('array');
+    expect(trip1.getSingleTripCost(testDestination1Data, 20, 3, 2)).to.be.a('number');
+    expect(trip1.getSingleTripCost(testDestination1Data, 20, 3, 2)).to.equal(1126.40);
+  });
+
 });

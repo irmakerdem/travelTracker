@@ -86,25 +86,23 @@ class Trip {
  
     return presentTrips;
   }
+
+  getSingleTripCost(destinationData, ourId, ourDuration, ourTravelers) {
+    const agentFee = 1.1;
+
+    let singleTripCost = destinationData.reduce((total, dest) => {
+      if(dest.id === ourId) {
+       let lodgingCost = dest.estimatedLodgingCostPerDay * ourDuration;
+       let flightCost = dest.estimatedFlightCostPerPerson * ourTravelers;
+        total += lodgingCost;
+        total += flightCost;
+      }
+    return total;
+    }, 0);
+
+    return Number((singleTripCost * agentFee).toFixed(2));
+  }
 }
-
-
-    //filter array of trip data to only include trips that have date within last yr
-    //find current date
-    //create new Date(currentDate - 1yr) 
-    //inside filter: return all trips where trip.date(JS date format aka new Date) > 1 yr ago
-    //split at dash
-    // convert yr from 4 char into 2 char??
-
-  // getTripsWithinLastYear() {
-  //   this.data.filter((currentTrip) => {
-  //     console.log(currentTrip)
-  //     this.data.date = new Date()
-  //     if(this.data.date) {
-        
-  //     }
-  //   })
-  // }
 
 //   sortAllTrips(travelerData) {
 //     //make an empty trips array in traveler?
