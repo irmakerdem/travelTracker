@@ -15,9 +15,7 @@ class Trip {
   }
 
   getTripDataById(id) {
-    let tripData = this.data.filter((tripInfo) => {
-      return tripInfo.userID === id;
-    });
+    let tripData = this.data.filter(tripInfo => tripInfo.userID === id)
     if (tripData.length === 0) {
       return 'Invalid ID!';
     }
@@ -77,9 +75,8 @@ class Trip {
     const todaysDate = new Date();
     const formatTodaysDate = this.formatDate(todaysDate);
 
-    const pastTrips = travellerTrips.filter((trip) => {
-      return trip.date < formatTodaysDate;
-    })
+    const pastTrips = travellerTrips.filter(trip => trip.date < formatTodaysDate);
+
     return pastTrips;
   }
 
@@ -112,8 +109,8 @@ class Trip {
     return upcomingTrips;
   }
 
-  getPendingTrips() {
-    // .status === "pending"
+  getPendingTrips(travellerTrips) {
+    // return travellerTrips.filter(trip => trip.status === "pending")
   }
 
   getPresentTrips() {
