@@ -25,8 +25,8 @@ class Trip {
   }
 
   getCurrentYear() {
-    var today = new Date();
-    var yyyy = today.getFullYear();
+    let today = new Date();
+    let yyyy = today.getFullYear();
     return yyyy;
   }
 
@@ -37,8 +37,8 @@ class Trip {
     const yearlyCost = destinationData.reduce((total, dest) => {
       this.data.forEach((trip) => {
         if(dest.id === trip.destinationID && trip.date.includes(currentYear)) {
-          var lodgingCost = dest.estimatedLodgingCostPerDay * trip.duration;
-          var flightCost = dest.estimatedFlightCostPerPerson * trip.travelers;
+          let lodgingCost = dest.estimatedLodgingCostPerDay * trip.duration;
+          let flightCost = dest.estimatedFlightCostPerPerson * trip.travelers;
           total += lodgingCost;
           total += flightCost;
         }
