@@ -103,9 +103,8 @@ class Trip {
     const todaysDate = new Date();
     const formatTodaysDate = this.formatDate(todaysDate);
 
-    const upcomingTrips = travellerTrips.filter((trip) => {
-      return trip.date > formatTodaysDate;
-    })
+    const upcomingTrips = travellerTrips.filter(trip => trip.date > formatTodaysDate);
+  
     return upcomingTrips;
   }
 
