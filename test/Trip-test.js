@@ -84,7 +84,6 @@ describe('Trip', () => {
         "suggestedActivities": []
       },
     ]);
-
   });
 
   it('should be able to take in destination data', () => {
@@ -205,5 +204,22 @@ describe('Trip', () => {
     ]);
   });
 
+  it('should be able to get trip data based on traveler\'s id', () => {
+    let travelerData = trip1.getTripDataById(1);
+
+    expect(travelerData).to.be.an('array');
+    expect(travelerData).to.deep.equal([
+      {
+        "id": 117,
+        "userID": 1,
+        "destinationID": 28,
+        "travelers": 3,
+        "date": "2021/01/09",
+        "duration": 15,
+        "status": "approved",
+        "suggestedActivities": []
+        },
+    ]);
+  });
 
 });
