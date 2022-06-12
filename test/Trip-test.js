@@ -222,4 +222,22 @@ describe('Trip', () => {
     ]);
   });
 
+  it('should be able to get pending trips', () => {
+    let miniTripData = tripData.filter((tripy, index) => index < 75);
+
+    expect(trip1.getPendingTrips(miniTripData)).to.be.an('array');
+    expect(trip1.getPendingTrips(miniTripData)).to.deep.equal([
+      {
+        "date": "2020/05/26",
+        "destinationID": 28,
+        "duration": 11,
+        "id": 71,
+        "status": "pending",
+        "suggestedActivities": [],
+        "travelers": 1,
+        "userID": 38,
+      }
+    ]);
+  });
+
 });

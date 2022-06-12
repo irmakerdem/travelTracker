@@ -80,7 +80,6 @@ class Trip {
     return pastTrips;
   }
 
-
   // formatDatesList(daylist) {
   //   let formattedDaylist = daylist.map(day => {
   //     let dd = String(day.getDate()).padStart(2, '0');
@@ -109,7 +108,9 @@ class Trip {
   }
 
   getPendingTrips(travellerTrips) {
-    // return travellerTrips.filter(trip => trip.status === "pending")
+    const pendingTrips = travellerTrips.filter(trip => trip.status === "pending")
+
+    return pendingTrips;
   }
 
   getPresentTrips() {
