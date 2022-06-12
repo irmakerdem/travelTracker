@@ -65,20 +65,59 @@ class Trip {
   //   })
   // }
 
-  getPastTrips() {
+//   sortAllTrips(travelerData) {
+//     //make an empty trips array in traveler?
+//     const sortedTrips = travelerData.trips.sort((tripA, tripB) => {
+//       return new Date(tripB.date) - new Date(tripA.date)
+//     })
+//     travelerData.trips = sortedTrips;
+// }
 
+  getPastTrips(travellerTrips) {
+    const todaysDate = new Date();
+    const formatTodaysDate = this.formatDate(todaysDate);
+
+    const pastTrips = travellerTrips.filter((trip) => {
+      return trip.date < formatTodaysDate;
+    })
+    return pastTrips;
+  }
+
+
+  // formatDatesList(daylist) {
+  //   let formattedDaylist = daylist.map(day => {
+  //     let dd = String(day.getDate()).padStart(2, '0');
+  //     let mm = String(day.getMonth() + 1).padStart(2, '0');
+  //     let yyyy = day.getFullYear();
+  //     return day = yyyy + '/' + mm + '/' + dd;
+  //   })
+  //     return formattedDaylist;
+  // }
+  
+  formatDate(day) {
+    let dd = String(day.getDate()).padStart(2, '0');
+    let mm = String(day.getMonth() + 1).padStart(2, '0');
+    let yyyy = day.getFullYear();
+    let formattedDay = yyyy + '/' + mm + '/' + dd;
+    return formattedDay;
+  }
+
+  getUpcomingTrips(travellerTrips) {
+    const todaysDate = new Date();
+    const formatTodaysDate = this.formatDate(todaysDate);
+
+    const upcomingTrips = travellerTrips.filter((trip) => {
+      return trip.date > formatTodaysDate;
+    })
+    return upcomingTrips;
+  }
+
+  getPendingTrips() {
+    // .status === "pending"
   }
 
   getPresentTrips() {
     //leave to end
-  }
-
-  getUpcomingTrips() {
-    
-  }
-
-  getPendingTrips() {
-    
   }
 }
 export default Trip;

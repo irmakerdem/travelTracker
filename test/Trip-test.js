@@ -92,13 +92,118 @@ describe('Trip', () => {
   });
 
   it('should be able to calculate total amount spent on trips this year', () => {
-    trip1.getCurrentYear();
-    trip1.getTotalSpentThisYear(testDestination1Data);
-    let miniDestinationData = testDestination1Data.filter((desty, index) => index < 5)
+    let miniDestinationData = testDestination1Data.filter((desty, index) => index < 5);
 
     expect(testDestination1Data).to.be.an('array');
-    expect(trip1.getTotalSpentThisYear(miniDestinationData)).to.be.an('number');
+    expect(trip1.getTotalSpentThisYear(miniDestinationData)).to.be.a('number');
     expect(trip1.getTotalSpentThisYear(miniDestinationData)).to.equal(8292.97);
   });
+
+  it('should be able to get past trips', () => {
+    let miniTripData = tripData.filter((tripy, index) => index < 7);
+
+    expect(trip1.getPastTrips(miniTripData)).to.be.an('array');
+    expect(trip1.getPastTrips(miniTripData)).to.deep.equal([
+      {
+        "date": "2022/05/22",
+        "destinationID": 22,
+        "duration": 17,
+        "id": 3,
+        "status": "approved",
+        "suggestedActivities": [],
+        "travelers": 4,
+        "userID": 3,
+      },
+      {
+        "date": "2022/02/25",
+        "destinationID": 14,
+        "duration": 10,
+        "id": 4,
+        "status": "approved",
+        "suggestedActivities": [],
+        "travelers": 2,
+        "userID": 43,
+      },
+      {
+        "date": "2022/04/30",
+        "destinationID": 29,
+        "duration": 18,
+        "id": 5,
+        "status": "approved",
+        "suggestedActivities": [],
+        "travelers": 3,
+        "userID": 42,
+      },
+      {
+        "date": "2022/05/28",
+        "destinationID": 17,
+        "duration": 20,
+        "id": 7,
+        "status": "approved",
+        "suggestedActivities": [],
+        "travelers": 5,
+        "userID": 37,
+      }
+    ]);
+  });
+
+  it('should be able to get upcoming trips', () => {
+    let miniTripData = tripData.filter((tripy, index) => index < 10);
+
+    expect(trip1.getUpcomingTrips(miniTripData)).to.be.an('array');
+    expect(trip1.getUpcomingTrips(miniTripData)).to.deep.equal([
+      {
+        "date": "2022/09/16",
+        "destinationID": 49,
+        "duration": 8,
+        "id": 1,
+        "status": "approved",
+        "suggestedActivities": [],
+        "travelers": 1,
+        "userID": 44,
+      },
+      {
+        "date": "2022/10/04",
+        "destinationID": 25,
+        "duration": 18,
+        "id": 2,
+        "status": "approved",
+        "suggestedActivities": [],
+        "travelers": 5,
+        "userID": 35,
+      },
+      {
+        "date": "2022/06/29",
+        "destinationID": 35,
+        "duration": 9,
+        "id": 6,
+        "status": "approved",
+        "suggestedActivities": [],
+        "travelers": 3,
+        "userID": 29,
+      },
+      {
+        "date": "2022/12/19",
+        "destinationID": 19,
+        "duration": 19,
+        "id": 9,
+        "status": "approved",
+        "suggestedActivities": [],
+        "travelers": 5,
+        "userID": 24,
+      },
+      {
+        "date": "2022/07/23",
+        "destinationID": 50,
+        "duration": 17,
+        "id": 10,
+        "status": "approved",
+        "suggestedActivities": [],
+        "travelers": 6,
+        "userID": 9,
+      }
+    ]);
+  });
+
 
 });
