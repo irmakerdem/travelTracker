@@ -27,3 +27,11 @@ let postTrip = (tripObjectToPost) => {
     body: JSON.stringify(tripObjectToPost)
   })
 };
+
+let postDestination = (destinationObjectToPost) => {
+  return fetch('http://localhost:3001/api/v1/destinations', {
+    method: 'POST',
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(destinationObjectToPost)
+  })
+};

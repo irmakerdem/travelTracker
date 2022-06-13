@@ -44,7 +44,7 @@ const displayEverything = () => {
     allTripsData = sortedTrips;
     // console.log(allTripsData)
     allDestinationsData = response[2].destinations
-
+    populateDestinationDropDown(allDestinationsData);
 
     const travelerData = allTravelersData.find((traveler) => {
         // console.log(traveler.id)
@@ -72,6 +72,18 @@ const displayEverything = () => {
     displayPendingTrips(travelerSpecificDestinations);
     displayPresentTrips(travelerSpecificDestinations);
   })
+}
+
+
+const populateDestinationDropDown = (destData) => {
+  let uniqueDestinations = destData.reduce((acc, cur) => {
+    if(!acc.includes(cur.destination)) {
+      acc.push(cur.destination)
+    }
+    return acc;
+  },[])
+  console.log(uniqueDestinations.sort())
+  return uniqueDestinations.sort();
 }
 
 
@@ -160,6 +172,11 @@ const displayPresentTrips = (matchingDestinations) => {
 //EVENT LISTENERS
 window.addEventListener('load', displayEverything);
 //getEstimateBtn.addEventListener('click', );
+
+
+
+
+
 
 
 
