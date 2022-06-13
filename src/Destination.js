@@ -17,7 +17,7 @@ class Destination {
  //found the id of the destination (destination.id) matched the destionaID (trip.destinationID) of the trip
  //                          42                     42(canada)
     let destinationRelatedTripData = tripData.map((trip) => {
-      let matchedDestination = this.data.find(destination => trip.destinationID === destination.id)
+      let matchedDestination = this.data.find(destination => trip.destinationID === destination.id);
       // console.log(matchedDestination)
 
       let newObj = {
@@ -29,7 +29,7 @@ class Destination {
         alt: matchedDestination.alt
       }
       // console.log(newObj)
-      return newObj 
+      return newObj; 
     })
 
     return destinationRelatedTripData;

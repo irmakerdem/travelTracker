@@ -17,7 +17,7 @@ class Traveler {
       return 'Invalid ID!';
     }
     this.allTrips = getTripData;
-    return this.allTrips
+    return this.allTrips;
   }
 
   formatDate(day) {
@@ -66,7 +66,7 @@ class Traveler {
       // console.log(typeof trip.date)
       // console.log(typeof formatTodaysDate)
       // console.log(trip.date === formatTodaysDate)
-      return trip.date === formatTodaysDate
+      return trip.date === formatTodaysDate;
     })
  
     this.presentTrips = presentTrips;

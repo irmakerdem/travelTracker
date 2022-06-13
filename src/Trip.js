@@ -42,7 +42,7 @@ class Trip {
     const travelerSpecificTrips = this.data.filter(trip => trip.userID === travelerId)
 
     const yearlyExpenses = travelerSpecificTrips.reduce((total, trip) => {
-      let getDestinations = allDestinations.find(destination => trip.destinationID === destination.id)
+      let getDestinations = allDestinations.find(destination => trip.destinationID === destination.id);
 
       if(trip.date.includes(currentYear)) {
         let lodgingCost = getDestinations.estimatedLodgingCostPerDay * trip.duration;
@@ -51,7 +51,7 @@ class Trip {
         total += lodgingCost;
         total += flightCost;
       }
-      return total
+      return total;
     },0)
     return Number((yearlyExpenses * agentFee).toFixed(2));
   }
