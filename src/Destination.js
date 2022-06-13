@@ -39,12 +39,6 @@ class Destination {
     //map for each element in tripData to this.data destination info
 
     // We will map the trip data to the destination data.
-
-    // let rachelsDreamLocations = tripData.find(destination => destination.destinationID === destination.id);
-    // console.log(rachelsDreamLocations)
-    // return rachelsDreamLocations;
-
-
 }
 
 export default Destination;

@@ -77,29 +77,21 @@ const displayEverything = () => {
 }
 
 
-
-
 const displayYearlyExpense = () => {
   yearlyExpense.innerHTML = `${trip.getTotalSpentThisYear(traveler.id, allDestinationsData)}`;
 }
-
 
 const displayTravelerName = () => {
   travelerName.innerHTML = `${traveler.getTravelerFirstName()}`;
 }
 
-
-
-
-
 const displayPastTrips = (matchingDestinations) => {
-
   console.log(traveler)
   let pastHTML = "";
   traveler.getPastTrips().forEach((trip) => {
     console.log(trip)
    let matched = matchingDestinations.find(destination => trip.id === destination.tripId)
-    pastHTML += `<div class="traveler-trip-card" id="${trip.id}">
+   pastHTML += `<div class="traveler-trip-card" id="${trip.id}">
                     <img alt="${matched.alt}" src="${matched.image}">
                     <p>Destination: ${matched.name}</p>
                     <p>Start Date: ${trip.date}</p>
@@ -108,7 +100,6 @@ const displayPastTrips = (matchingDestinations) => {
                     <p id="trip-status">Status: <b>${trip.status}</b></p>
                   </div>`
   });
-  // console.log(pastHTML)
   pastTripsBox.innerHTML = pastHTML;
 };
 
@@ -117,16 +108,16 @@ const displayUpcomingTrips = (matchingDestinations) => {
   let upcomingHTML = "";
   traveler.getUpcomingTrips().forEach((trip) => {
     console.log(trip)
+    let matched = matchingDestinations.find(destination => trip.id === destination.tripId)
     upcomingHTML += `<div class="traveler-trip-card" id="${trip.id}">
-                    
-                    
+                    <img alt="${matched.alt}" src="${matched.image}">
+                    <p>Destination: ${matched.name}</p>
                     <p>Start Date: ${trip.date}</p>
                     <p>Duration: ${trip.duration}</p>
                     <p>Travelers: ${trip.travelers}</p>
                     <p id="trip-status">Status: <b>${trip.status}</b></p>
                   </div>`
   });
-  // console.log(upcomingHTML)
   upcomingTripsBox.innerHTML = upcomingHTML;
 };
 
@@ -135,16 +126,16 @@ const displayPendingTrips = (matchingDestinations) => {
   let pendingHTML = "";
   traveler.getPendingTrips().forEach((trip) => {
     console.log(trip)
+    let matched = matchingDestinations.find(destination => trip.id === destination.tripId)
     pendingHTML += `<div class="traveler-trip-card" id="${trip.id}">
-                    
-                    
+                    <img alt="${matched.alt}" src="${matched.image}">
+                    <p>Destination: ${matched.name}</p>
                     <p>Start Date: ${trip.date}</p>
                     <p>Duration: ${trip.duration}</p>
                     <p>Travelers: ${trip.travelers}</p>
                     <p id="trip-status">Status: <b>${trip.status}</b></p>
                   </div>`
   });
-  // console.log(pendingHTML)
   pendingTripsBox.innerHTML = pendingHTML;
 };
 
@@ -154,16 +145,16 @@ const displayPresentTrips = (matchingDestinations) => {
   console.log(traveler.getPresentTrips())
   traveler.getPresentTrips().forEach((trip) => {
     console.log(trip)
+    let matched = matchingDestinations.find(destination => trip.id === destination.tripId)
     presentHTML += `<div class="traveler-trip-card" id="${trip.id}">
-                    
-                    
+                    <img alt="${matched.alt}" src="${matched.image}">
+                    <p>Destination: ${matched.name}</p>
                     <p>Start Date: ${trip.date}</p>
                     <p>Duration: ${trip.duration}</p>
                     <p>Travelers: ${trip.travelers}</p>
                     <p id="trip-status">Status: <b>${trip.status}</b></p>
                   </div>`
   });
-  // console.log(presentHTML)
   presentTripsBox.innerHTML = presentHTML;
 };
 
