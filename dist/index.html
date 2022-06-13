@@ -12,28 +12,66 @@
   <body>
     <main>
       <h1>Travel Tracker</h1>
-      <p class="errorMessage"></p>
+      <p class="error-message"></p>
       <img class="logo" src="./images/world-travel-logo.png" alt="plane traveling globe logo">
       <h2>Welcome, name! 👋</h2>
-      <h3 class ="yearlyExpense">🤑 You've spent $_____ this year 🤑</h3>
+      <h3 class ="yearly-expense">🤑 You've spent $_____ this year 🤑</h3>
       <section>
         <h4>Your Trips</h4>
-          <section>Past Trips</section>
+          <div class="trips-container">
             <div>
-              <img class="cappadocia" src="./images/Cappadocia.jpg" alt="Cappadocia, Turkey photo">
+              <h1>Past Trips</h1>
+              <section class="past-trips-container">
+                <div class="traveler-trip-card">
+                  <img class="trip-card-image" src="./images/Cappadocia.jpg" alt="Cappadocia, Turkey photo">
+                  <p>Destination: </p>
+                  <p>Start Date: </p>
+                  <p>Duration: </p>
+                  <p>Travelers: </p>
+                  <p id="trip-status">Status: <b>APPROVED</b></p>
+                </div>
+              </section>
             </div>
-          <section>Present Trips</section>
             <div>
-              <img class="cappadocia" src="./images/Cappadocia.jpg" alt="Cappadocia, Turkey photo">
+              <h1>Present Trips</h1>
+              <section class="present-trips-container">
+                <div class="traveler-trip-card">
+                  <img class="trip-card-image" src="./images/Cappadocia.jpg" alt="Cappadocia, Turkey photo">
+                  <p>Destination: </p>
+                  <p>Start Date: </p>
+                  <p>Duration: </p>
+                  <p>Travelers: </p>
+                  <p id="trip-status">Status: <b>APPROVED</b></p>
+                </div>
+              </section>
             </div>
-          <section>Upcoming Trips</section>
             <div>
-              <img class="cappadocia" src="./images/Cappadocia.jpg" alt="Cappadocia, Turkey photo">
+              <h1>Upcoming Trips</h1>
+              <section class="upcoming-trips-container">
+                <div class="traveler-trip-card">
+                  <img class="trip-card-image" src="./images/Cappadocia.jpg" alt="Cappadocia, Turkey photo">
+                  <p>Destination: </p>
+                  <p>Start Date: </p>
+                  <p>Duration: </p>
+                  <p>Travelers: </p>
+                  <p id="trip-status">Status: <b>APPROVED</b></p>
+                </div>
+              </section>
             </div>
-          <section>Pending Trips</section>
             <div>
-              <img class="cappadocia" src="./images/Cappadocia.jpg" alt="Cappadocia, Turkey photo">
+              <h1>Pending Trips</h1>
+              <section class="pending-trips-container">
+                <div class="traveler-trip-card">
+                  <img class="trip-card-image" src="./images/Cappadocia.jpg" alt="Cappadocia, Turkey photo">
+                  <p>Destination: </p>
+                  <p>Start Date: </p>
+                  <p>Duration: </p>
+                  <p>Travelers: </p>
+                  <p id="trip-status">Status: <b>APPROVED</b></p>
+                </div>
+              </section>
             </div>
+          </div>
       </section>
       <form>
         <h5>MAKE A REQUEST</h5><br>
@@ -51,9 +89,9 @@
           <option value="mercedes">Mercedes</option>
           <option value="audi">Audi</option>
         </select><br><br>
-        <input class="getEstimateBtn" id="" type="submit" value="Get Estimate">
+        <input class="get-estimate-btn" id="" type="submit" value="Get Estimate">
       </form>
-      <h6 class="tripEstimate">Trip Request's Estimate is $_______*<br>
+      <h6 class="trip-estimate">Trip Request's Estimate is $_______*<br>
         <span>*including 10% travel agent fee</span>
       </h6>
     </main>

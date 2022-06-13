@@ -12,15 +12,19 @@ class Trip {
 
   constructor(tripData) {
     this.data = tripData;
+    this.pastTrips = [];
+    this.presentTrips = [];
+    this.upcomingTrips = [];
+    this.pendingTrips = [];
   }
 
-  getTripDataById(id) {
-    let tripData = this.data.filter(tripInfo => tripInfo.userID === id);
-    if (tripData.length === 0) {
-      return 'Invalid ID!';
-    }
-    return tripData;
-  }
+  // getTripDataById(id) {
+  //   let tripData = this.data.filter(tripInfo => tripInfo.userID === id);
+  //   if (tripData.length === 0) {
+  //     return 'Invalid ID!';
+  //   }
+  //   return tripData;
+  // }
 
   getCurrentYear() {
     let today = new Date();
@@ -60,7 +64,8 @@ class Trip {
 
     const pastTrips = travellerTrips.filter(trip => trip.date < formatTodaysDate);
 
-    return pastTrips;
+    this.pastTrips = pastTrips;
+    console.log("this.pastTrips", this.pastTrips);
   }
 
   getUpcomingTrips(travellerTrips) {
@@ -69,13 +74,15 @@ class Trip {
 
     const upcomingTrips = travellerTrips.filter(trip => trip.date > formatTodaysDate);
   
-    return upcomingTrips;
+    this.upcomingTrips = upcomingTrips;
+    console.log("this.upcomingTrips", this.upcomingTrips);
   }
 
   getPendingTrips(travellerTrips) {
     const pendingTrips = travellerTrips.filter(trip => trip.status === "pending");
 
-    return pendingTrips;
+    this.pendingTrips = pendingTrips;
+    console.log("this.pendingTrips", this.pendingTrips);
   }
 
   getPresentTrips(travellerTrips) {
@@ -84,7 +91,8 @@ class Trip {
 
     const presentTrips = travellerTrips.filter(trip => trip.date === formatTodaysDate);
  
-    return presentTrips;
+    this.presentTrips = presentTrips;
+    console.log("this.presentTrips", this.presentTrips);
   }
 
   getSingleTripCost(destinationData, ourId, ourDuration, ourTravelers) {
@@ -104,13 +112,7 @@ class Trip {
   }
 }
 
-//   sortAllTrips(travelerData) {
-//     //make an empty trips array in traveler?
-//     const sortedTrips = travelerData.trips.sort((tripA, tripB) => {
-//       return new Date(tripB.date) - new Date(tripA.date)
-//     })
-//     travelerData.trips = sortedTrips;
-// }
+
 
   // formatDatesList(daylist) {
   //   let formattedDaylist = daylist.map(day => {

@@ -11,7 +11,7 @@ span {
   font-size: x-small;
 }
 
-.cappadocia {
+.trip-card-image, .cappadocia {
   height: 20%;
   width: 25%;
 }
@@ -21,6 +21,15 @@ span {
   width: 15%;
 }
 
-.getEstimate, #formDate, #formDays, #formTravelers, #formDestinations {
+.get-estimate-btn, #formDate, #formDays, #formTravelers, #formDestinations {
   cursor: pointer;
+}
+
+.trips-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.traveler-trip-card {
+  background-color: blue;
 }

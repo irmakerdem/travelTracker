@@ -17,10 +17,18 @@ import {allTravelPromises, allTripsPromises, allDestinationsPromises} from './ap
 // let allTripsPromises;
 // let allDestinationsPromises;
 
+//QUERY SELECTORS
+let pastTripsBox = document.querySelector('.past-trips-container');
+let presentTripsBox = document.querySelector('.present-trips-container');
+let upcomingTripsBox = document.querySelector('.upcoming-trips-container');
+let pendingTripsBox = document.querySelector('.pending-trips-container');
 
-let allTrips;
-let allTravelers;
-let allDestinations;
+let allTripsData;
+let allTravelersData;
+let allDestinationsData;
+let traveler;
+let trip;
+
 
 
 const displayEverything = () => {
@@ -28,20 +36,141 @@ const displayEverything = () => {
     [allTravelPromises, allTripsPromises, allDestinationsPromises]
   )
   .then(response => {
-    allTravelers = response[0].travelers
-    allTrips = response[1].trips
-    allDestinations = response[2].destinations
-    console.log(allTravelers)
-    console.log(allTrips)
-    console.log(allDestinations)
+    allTravelersData = response[0].travelers
+    console.log(allTravelersData)
+    allTripsData = response[1].trips
+
+    const sortedTrips = allTripsData.sort((tripA, tripB) => {
+      console.log(tripA)
+      console.log(tripB)
+      return new Date(tripB.date) - new Date(tripA.date)
+    })
+    allTripsData = sortedTrips;
+    console.log(allTripsData)
+
+    allDestinationsData = response[2].destinations
+    //make line below dynamic once Ham is working and I can use all other travelers data
+    const travelerData = allTravelersData.find((traveler) => {
+        console.log(traveler.id)
+        return traveler.id === 38
+      });
+    console.log(travelerData);
+    traveler = new Traveler(travelerData);
+    // console.log(traveler)
+    traveler.getTravelerSpecificTripData(allTripsData);
+
+    trip = new Trip(allTripsData);
+    trip.getPastTrips(traveler.allTrips);
+    trip.getUpcomingTrips(traveler.allTrips);
+    trip.getPendingTrips(traveler.allTrips);
+    trip.getPresentTrips(traveler.allTrips);
+    displayPastTrips();
+    displayUpcomingTrips();
+    displayPendingTrips();
+    displayPresentTrips();
   })
 }
 
+/* <img class="trip-card-image" src="${}" alt="${}"></img> */
+/* <p>Destination: ${}</p> */
+
+
+const displayPastTrips = () => {
+  console.log(traveler)
+  let pastHTML = "";
+  traveler.getPastTrips().forEach((trip) => {
+    console.log(trip)
+    pastHTML += `<div class="traveler-trip-card" id="${trip.id}">
+                    
+                    
+                    <p>Start Date: ${trip.date}</p>
+                    <p>Duration: ${trip.duration}</p>
+                    <p>Travelers: ${trip.travelers}</p>
+                    <p id="trip-status">Status: <b>${trip.status}</b></p>
+                  </div>`
+  });
+  console.log(pastHTML)
+  pastTripsBox.innerHTML = pastHTML;
+};
+
+const displayUpcomingTrips = () => {
+  console.log("84", traveler)
+  let upcomingHTML = "";
+  traveler.getUpcomingTrips().forEach((trip) => {
+    console.log(trip)
+    upcomingHTML += `<div class="traveler-trip-card" id="${trip.id}">
+                    
+                    
+                    <p>Start Date: ${trip.date}</p>
+                    <p>Duration: ${trip.duration}</p>
+                    <p>Travelers: ${trip.travelers}</p>
+                    <p id="trip-status">Status: <b>${trip.status}</b></p>
+                  </div>`
+  });
+  console.log(upcomingHTML)
+  upcomingTripsBox.innerHTML = upcomingHTML;
+};
+
+const displayPendingTrips = () => {
+  console.log(traveler)
+  let pendingHTML = "";
+  traveler.getPendingTrips().forEach((trip) => {
+    console.log(trip)
+    pendingHTML += `<div class="traveler-trip-card" id="${trip.id}">
+                    
+                    
+                    <p>Start Date: ${trip.date}</p>
+                    <p>Duration: ${trip.duration}</p>
+                    <p>Travelers: ${trip.travelers}</p>
+                    <p id="trip-status">Status: <b>${trip.status}</b></p>
+                  </div>`
+  });
+  console.log(pendingHTML)
+  pendingTripsBox.innerHTML = pendingHTML;
+};
+
+const displayPresentTrips = () => {
+  console.log(traveler)
+  let presentHTML = "";
+  console.log(traveler.getPresentTrips())
+  traveler.getPresentTrips().forEach((trip) => {
+    console.log(trip)
+    presentHTML += `<div class="traveler-trip-card" id="${trip.id}">
+                    
+                    
+                    <p>Start Date: ${trip.date}</p>
+                    <p>Duration: ${trip.duration}</p>
+                    <p>Travelers: ${trip.travelers}</p>
+                    <p id="trip-status">Status: <b>${trip.status}</b></p>
+                  </div>`
+  });
+  console.log(presentHTML)
+  presentTripsBox.innerHTML = presentHTML;
+};
+
+
+
+
+
+
+// const getRandomTraveler = () => {
+
+// }
+
+
+// const displayYearlyExpense = () => {
+//   let travelerSpecificTrips = globalTrip.getTripDataById(globalTraveler.id);
+//   let yearlyCost = globalTrip.getTotalSpentThisYear(travelerSpecificTrips);
+//   yearlyExpense.innerHTML = `🤑 You've spent $${yearlyCost} this year 🤑`;
+// }
+// displayYearlyExpense();
+
+
 
 //QUERY SELECTORS
-// let yearlyExpense = document.querySelector('.yearlyExpense');
-// let tripEstimate = document.querySelector('.tripEstimate');
-// let getEstimateBtn = document.querySelector('.getEstimateBtn');
+// let yearlyExpense = document.querySelector('.yearly-expense');
+// let tripEstimate = document.querySelector('.trip-estimate');
+// let getEstimateBtn = document.querySelector('.get-estimate-btn');
 
 //EVENT LISTENERS
 window.addEventListener('load', displayEverything);
@@ -92,15 +221,6 @@ window.addEventListener('load', displayEverything);
 //   element.classList.add('hidden');
 // };
 
-
-
-
-// const displayYearlyExpense = () => {
-//   let travelerSpecificTrips = globalTrip.getTripDataById(globalTraveler.id);
-//   let yearlyCost = globalTrip.getTotalSpentThisYear(travelerSpecificTrips);
-//   yearlyExpense.innerHTML = `🤑 You've spent $${yearlyCost} this year 🤑`;
-// }
-// displayYearlyExpense();
 
 
 

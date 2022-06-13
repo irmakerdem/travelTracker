@@ -1,5 +1,5 @@
 //QUERY SELECTOR
-let errorMessage = document.querySelector('.errorMessage');
+let errorMessage = document.querySelector('.error-message');
 
 //FETCH REQUESTS
 const getPromise = (url) => {
