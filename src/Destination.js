@@ -11,13 +11,40 @@ class Destination {
     this.data = destinationData;
   }
 
-  getDestinationDataById(id) {
-    let getDestinationData = this.data.filter(destInfo => destInfo.id === id);
-    if (this.data.length === 0) {
-      return 'Invalid ID!';
-    }
-    return getDestinationData;
+  getDestinations(tripData) {
+ //tripData is traveler specific trip data
+
+ //found the id of the destination (destination.id) matched the destionaID (trip.destinationID) of the trip
+ //                          42                     42(canada)
+    let destinationRelatedTripData = tripData.map((trip) => {
+      let matchedDestination = this.data.find(destination => trip.destinationID === destination.id)
+      // console.log(matchedDestination)
+
+      let newObj = {
+        tripId: trip.id,
+        // (trip.id)
+        id: matchedDestination.id,
+        name: matchedDestination.destination,
+        image: matchedDestination.image,
+        alt: matchedDestination.alt
+      }
+      // console.log(newObj)
+      return newObj 
+    })
+
+    return destinationRelatedTripData;
   }
+
+    //find specific destination for a specific traveler(id)
+    //map for each element in tripData to this.data destination info
+
+    // We will map the trip data to the destination data.
+
+    // let rachelsDreamLocations = tripData.find(destination => destination.destinationID === destination.id);
+    // console.log(rachelsDreamLocations)
+    // return rachelsDreamLocations;
+
+
 }
 
 export default Destination;

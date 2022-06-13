@@ -8,14 +8,13 @@ import './images/Cappadocia.jpg'
 import {allTravelPromises, allTripsPromises, allDestinationsPromises} from './apiCalls';
 
 
-
 //GLOBAL VARIABLES
-// let globalTraveler;
-// let globalTrip;
-// let globalDestination;
-// let allTravelPromises;
-// let allTripsPromises;
-// let allDestinationsPromises;
+let allTripsData;
+let allTravelersData;
+let allDestinationsData;
+let traveler;
+let trip;
+
 
 //QUERY SELECTORS
 let pastTripsBox = document.querySelector('.past-trips-container');
@@ -26,11 +25,10 @@ let pendingTripsBox = document.querySelector('.pending-trips-container');
 let yearlyExpense = document.querySelector('.yearly-expense');
 let travelerName = document.querySelector('.traveler-name');
 
-let allTripsData;
-let allTravelersData;
-let allDestinationsData;
-let traveler;
-let trip;
+// let tripEstimate = document.querySelector('.trip-estimate');
+// let getEstimateBtn = document.querySelector('.get-estimate-btn');
+
+
 
 
 
@@ -57,15 +55,10 @@ const displayEverything = () => {
       });
     console.log(travelerData);
     traveler = new Traveler(travelerData);
-    // console.log(traveler)
-    let travelerSpecificData = traveler.getTravelerSpecificTripData(allTripsData);
 
+    let travelerSpecificTripData = traveler.getTravelerSpecificTripData(allTripsData);
 
     trip = new Trip(allTripsData);
-    // trip.getPastTrips(traveler.allTrips);
-    // trip.getUpcomingTrips(traveler.allTrips);
-    // trip.getPendingTrips(traveler.allTrips);
-    // trip.getPresentTrips(traveler.allTrips);
     traveler.getPastTrips();
     traveler.getUpcomingTrips();
     traveler.getPendingTrips();
@@ -73,15 +66,17 @@ const displayEverything = () => {
     displayTravelerName();
     displayYearlyExpense();
 
-    displayPastTrips();
-    displayUpcomingTrips();
-    displayPendingTrips();
-    displayPresentTrips();
+    let vacations = new Destination(allDestinationsData)
+    let travelerSpecificDestinations = vacations.getDestinations(travelerSpecificTripData);
+
+    displayPastTrips(travelerSpecificDestinations);
+    displayUpcomingTrips(travelerSpecificDestinations);
+    displayPendingTrips(travelerSpecificDestinations);
+    displayPresentTrips(travelerSpecificDestinations);
   })
 }
 
-/* <img class="trip-card-image" src="${}" alt="${}"></img> */
-/* <p>Destination: ${}</p> */
+
 
 
 const displayYearlyExpense = () => {
@@ -96,14 +91,17 @@ const displayTravelerName = () => {
 
 
 
-const displayPastTrips = () => {
+
+const displayPastTrips = (matchingDestinations) => {
+
   console.log(traveler)
   let pastHTML = "";
   traveler.getPastTrips().forEach((trip) => {
     console.log(trip)
+   let matched = matchingDestinations.find(destination => trip.id === destination.tripId)
     pastHTML += `<div class="traveler-trip-card" id="${trip.id}">
-                    
-                    
+                    <img alt="${matched.alt}" src="${matched.image}">
+                    <p>Destination: ${matched.name}</p>
                     <p>Start Date: ${trip.date}</p>
                     <p>Duration: ${trip.duration}</p>
                     <p>Travelers: ${trip.travelers}</p>
@@ -114,7 +112,7 @@ const displayPastTrips = () => {
   pastTripsBox.innerHTML = pastHTML;
 };
 
-const displayUpcomingTrips = () => {
+const displayUpcomingTrips = (matchingDestinations) => {
   console.log("84", traveler)
   let upcomingHTML = "";
   traveler.getUpcomingTrips().forEach((trip) => {
@@ -132,7 +130,7 @@ const displayUpcomingTrips = () => {
   upcomingTripsBox.innerHTML = upcomingHTML;
 };
 
-const displayPendingTrips = () => {
+const displayPendingTrips = (matchingDestinations) => {
   console.log(traveler)
   let pendingHTML = "";
   traveler.getPendingTrips().forEach((trip) => {
@@ -150,7 +148,7 @@ const displayPendingTrips = () => {
   pendingTripsBox.innerHTML = pendingHTML;
 };
 
-const displayPresentTrips = () => {
+const displayPresentTrips = (matchingDestinations) => {
   console.log(traveler)
   let presentHTML = "";
   console.log(traveler.getPresentTrips())
@@ -170,83 +168,24 @@ const displayPresentTrips = () => {
 };
 
 
-
-
-
-
-// const getRandomTraveler = () => {
-// }
-
-
-
-
-
-
-
-
-//QUERY SELECTORS
-
-// let tripEstimate = document.querySelector('.trip-estimate');
-// let getEstimateBtn = document.querySelector('.get-estimate-btn');
-
 //EVENT LISTENERS
 window.addEventListener('load', displayEverything);
 //getEstimateBtn.addEventListener('click', );
 
 
+
+
 //API FETCH FUNCTIONS
-// function getAllUserData(data) {
-//   globalUserData = data;
-//   globalUserRepository = new UserRepository(data);
-// }
-
-// function getAllHydrationData(data) {
-//   globalHydrationData = data;
-//   globalHydration = new Hydration(data);
-// }
-
-// function getAllSleepData(data) {
-//   globalSleepData = data;
-//   globalSleep = new Sleep(data);
-//   getUserName();
-// }
-
-// function getAllActivityData(data) {
-//   globalActivityData = data;
-//   globalActivity = new Activity(data, globalUserData);
-// }
-
-// function displayResolvedData() {
-//   fetchAllData()
-//   .then((allData) => {
-//     getAllUserData(allData[0].userData);
-//     getAllHydrationData(allData[1].hydrationData);
-//     getAllActivityData(allData[2].activityData);
-//     getAllSleepData(allData[3].sleepData);
-//   })
-// }
 
 
 
 
 //FUNCTIONS
-// function show(element) {
-//   element.classList.remove('hidden');
-// };
-
-// function hide(element) {
-//   element.classList.add('hidden');
-// };
-
-
-
-
 
 // const clearForm = () => {
 //   somethingggg.innerHTML = '';
 // }
 // clearForm();
-
 
 
 
@@ -257,13 +196,6 @@ window.addEventListener('load', displayEverything);
 // }
 // displayTripCostEstimate();
 
-
-
-
-
-// const allData = Promise.all(endpoints).then((value) => {
-//   return value;
-// });
 
 
 

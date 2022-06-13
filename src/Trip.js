@@ -35,7 +35,7 @@ class Trip {
   }
 
   getTotalSpentThisYear(travelerId, allDestinations) {
-    console.log(allDestinations)
+    // console.log(allDestinations)
     const agentFee = 1.1;
     const currentYear = this.getCurrentYear();
 
@@ -53,7 +53,6 @@ class Trip {
       }
       return total
     },0)
-    // console.log(yearlyExpenses)
     return Number((yearlyExpenses * agentFee).toFixed(2));
   }
 
