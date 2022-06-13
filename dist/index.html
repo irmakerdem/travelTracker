@@ -14,7 +14,7 @@
       <h1>Travel Tracker</h1>
       <img class="logo" src="./images/world-travel-logo.png" alt="plane traveling globe logo">
       <h2>Welcome, name! 👋</h2>
-      <h3>🤑 You've spent $_____ so far 🤑</h3>
+      <h3 class ="yearlyExpense">🤑 You've spent $_____ this year 🤑</h3>
       <section>
         <h4>Your Trips</h4>
           <section>Past Trips</section>
@@ -36,21 +36,21 @@
       </section>
       <form>
         <h5>MAKE A REQUEST</h5><br>
-        <label class="" id="">Date:</label><br>
-        <input class="" id="" type="date" placeholder="dd/mm/yyyy" required><br>
-        <label class="" id="">Number of Days:</label><br>
-        <input class="" id="" type="number" placeholder="0" required><br>
-        <label class="" id="">Number of Travelers:</label><br>
-        <input class="" id="" type="number" placeholder="0" required><br>
-        <label class="" id="">Destinations:</label><br>
-        <select class="" id="" required>
+        <label class="formInfo" id="">Date:</label><br>
+        <input class="formInfo" id="formDate" type="date" placeholder="dd/mm/yyyy" required><br>
+        <label class="formInfo" id="">Number of Days:</label><br>
+        <input class="formInfo" id="formDays" type="number" placeholder="0" required><br>
+        <label class="formInfo" id="">Number of Travelers:</label><br>
+        <input class="formInfo" id="formTravelers" type="number" placeholder="0" required><br>
+        <label class="formInfo" id="">Destinations:</label><br>
+        <select class="formInfo" id="formDestinations" required>
           <option value="choose">Choose A Destination:</option>
           <option value="volvo">Volvo</option>
           <option value="saab">Saab</option>
           <option value="mercedes">Mercedes</option>
           <option value="audi">Audi</option>
         </select><br><br>
-        <input class="" id="" type="submit" value="Get Estimate">
+        <input class="getEstimate" id="" type="submit" value="Get Estimate">
       </form>
       <h6>Trip Request's Estimate is $_______*<br>
         <span>*including 10% travel agent fee</span>
