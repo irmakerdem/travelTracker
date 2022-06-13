@@ -1,3 +1,5 @@
+import Destination from "./Destination";
+
 class Trip {
   //tripData is an object
 
@@ -32,69 +34,31 @@ class Trip {
     return yyyy;
   }
 
-  getTotalSpentThisYear(destinationData) {
+  getTotalSpentThisYear(travelerId, allDestinations) {
+    console.log(allDestinations)
     const agentFee = 1.1;
     const currentYear = this.getCurrentYear();
 
-    const yearlyCost = destinationData.reduce((total, dest) => {
-      this.data.forEach((trip) => {
-        if(dest.id === trip.destinationID && trip.date.includes(currentYear)) {
-          let lodgingCost = dest.estimatedLodgingCostPerDay * trip.duration;
-          let flightCost = dest.estimatedFlightCostPerPerson * trip.travelers;
-          total += lodgingCost;
-          total += flightCost;
-        }
-      });
-      return Number((total * agentFee).toFixed(2));
-    }, 0);
-    return yearlyCost;
+    const travelerSpecificTrips = this.data.filter(trip => trip.userID === travelerId)
+
+    const yearlyExpenses = travelerSpecificTrips.reduce((total, trip) => {
+      let getDestinations = allDestinations.find(destination => trip.destinationID === destination.id)
+
+      if(trip.date.includes(currentYear)) {
+        let lodgingCost = getDestinations.estimatedLodgingCostPerDay * trip.duration;
+        let flightCost = getDestinations.estimatedFlightCostPerPerson * trip.travelers;
+   
+        total += lodgingCost;
+        total += flightCost;
+      }
+      return total
+    },0)
+    // console.log(yearlyExpenses)
+    return Number((yearlyExpenses * agentFee).toFixed(2));
   }
+
+
   
-  formatDate(day) {
-    let dd = String(day.getDate()).padStart(2, '0');
-    let mm = String(day.getMonth() + 1).padStart(2, '0');
-    let yyyy = day.getFullYear();
-    let formattedDay = yyyy + '/' + mm + '/' + dd;
-    return formattedDay;
-  }
-
-  getPastTrips(travellerTrips) {
-    const todaysDate = new Date();
-    const formatTodaysDate = this.formatDate(todaysDate);
-
-    const pastTrips = travellerTrips.filter(trip => trip.date < formatTodaysDate);
-
-    this.pastTrips = pastTrips;
-    console.log("this.pastTrips", this.pastTrips);
-  }
-
-  getUpcomingTrips(travellerTrips) {
-    const todaysDate = new Date();
-    const formatTodaysDate = this.formatDate(todaysDate);
-
-    const upcomingTrips = travellerTrips.filter(trip => trip.date > formatTodaysDate);
-  
-    this.upcomingTrips = upcomingTrips;
-    console.log("this.upcomingTrips", this.upcomingTrips);
-  }
-
-  getPendingTrips(travellerTrips) {
-    const pendingTrips = travellerTrips.filter(trip => trip.status === "pending");
-
-    this.pendingTrips = pendingTrips;
-    console.log("this.pendingTrips", this.pendingTrips);
-  }
-
-  getPresentTrips(travellerTrips) {
-    const todaysDate = new Date();
-    const formatTodaysDate = this.formatDate(todaysDate);
-
-    const presentTrips = travellerTrips.filter(trip => trip.date === formatTodaysDate);
- 
-    this.presentTrips = presentTrips;
-    console.log("this.presentTrips", this.presentTrips);
-  }
-
   getSingleTripCost(destinationData, ourId, ourDuration, ourTravelers) {
     const agentFee = 1.1;
 
@@ -111,7 +75,6 @@ class Trip {
     return Number((singleTripCost * agentFee).toFixed(2));
   }
 }
-
 
 
   // formatDatesList(daylist) {

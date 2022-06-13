@@ -12,13 +12,11 @@ class Destination {
   }
 
   getDestinationDataById(id) {
-    // let sleepData = this.data.filter((snooze) => {
-    //   return snooze.userID === id;
-    // });
-    // if (sleepData.length === 0) {
-    //   return 'Invalid ID!';
-    // }
-    // return sleepData;
+    let getDestinationData = this.data.filter(destInfo => destInfo.id === id);
+    if (this.data.length === 0) {
+      return 'Invalid ID!';
+    }
+    return getDestinationData;
   }
 }
 

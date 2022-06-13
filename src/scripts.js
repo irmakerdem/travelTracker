@@ -23,6 +23,9 @@ let presentTripsBox = document.querySelector('.present-trips-container');
 let upcomingTripsBox = document.querySelector('.upcoming-trips-container');
 let pendingTripsBox = document.querySelector('.pending-trips-container');
 
+let yearlyExpense = document.querySelector('.yearly-expense');
+let travelerName = document.querySelector('.traveler-name');
+
 let allTripsData;
 let allTravelersData;
 let allDestinationsData;
@@ -41,8 +44,6 @@ const displayEverything = () => {
     allTripsData = response[1].trips
 
     const sortedTrips = allTripsData.sort((tripA, tripB) => {
-      console.log(tripA)
-      console.log(tripB)
       return new Date(tripB.date) - new Date(tripA.date)
     })
     allTripsData = sortedTrips;
@@ -51,19 +52,27 @@ const displayEverything = () => {
     allDestinationsData = response[2].destinations
     //make line below dynamic once Ham is working and I can use all other travelers data
     const travelerData = allTravelersData.find((traveler) => {
-        console.log(traveler.id)
-        return traveler.id === 38
+        // console.log(traveler.id)
+        return traveler.id === 47
       });
     console.log(travelerData);
     traveler = new Traveler(travelerData);
     // console.log(traveler)
-    traveler.getTravelerSpecificTripData(allTripsData);
+    let travelerSpecificData = traveler.getTravelerSpecificTripData(allTripsData);
+
 
     trip = new Trip(allTripsData);
-    trip.getPastTrips(traveler.allTrips);
-    trip.getUpcomingTrips(traveler.allTrips);
-    trip.getPendingTrips(traveler.allTrips);
-    trip.getPresentTrips(traveler.allTrips);
+    // trip.getPastTrips(traveler.allTrips);
+    // trip.getUpcomingTrips(traveler.allTrips);
+    // trip.getPendingTrips(traveler.allTrips);
+    // trip.getPresentTrips(traveler.allTrips);
+    traveler.getPastTrips();
+    traveler.getUpcomingTrips();
+    traveler.getPendingTrips();
+    traveler.getPresentTrips();
+    displayTravelerName();
+    displayYearlyExpense();
+
     displayPastTrips();
     displayUpcomingTrips();
     displayPendingTrips();
@@ -73,6 +82,18 @@ const displayEverything = () => {
 
 /* <img class="trip-card-image" src="${}" alt="${}"></img> */
 /* <p>Destination: ${}</p> */
+
+
+const displayYearlyExpense = () => {
+  yearlyExpense.innerHTML = `${trip.getTotalSpentThisYear(traveler.id, allDestinationsData)}`;
+}
+
+
+const displayTravelerName = () => {
+  travelerName.innerHTML = `${traveler.getTravelerFirstName()}`;
+}
+
+
 
 
 const displayPastTrips = () => {
@@ -89,7 +110,7 @@ const displayPastTrips = () => {
                     <p id="trip-status">Status: <b>${trip.status}</b></p>
                   </div>`
   });
-  console.log(pastHTML)
+  // console.log(pastHTML)
   pastTripsBox.innerHTML = pastHTML;
 };
 
@@ -107,7 +128,7 @@ const displayUpcomingTrips = () => {
                     <p id="trip-status">Status: <b>${trip.status}</b></p>
                   </div>`
   });
-  console.log(upcomingHTML)
+  // console.log(upcomingHTML)
   upcomingTripsBox.innerHTML = upcomingHTML;
 };
 
@@ -125,7 +146,7 @@ const displayPendingTrips = () => {
                     <p id="trip-status">Status: <b>${trip.status}</b></p>
                   </div>`
   });
-  console.log(pendingHTML)
+  // console.log(pendingHTML)
   pendingTripsBox.innerHTML = pendingHTML;
 };
 
@@ -144,7 +165,7 @@ const displayPresentTrips = () => {
                     <p id="trip-status">Status: <b>${trip.status}</b></p>
                   </div>`
   });
-  console.log(presentHTML)
+  // console.log(presentHTML)
   presentTripsBox.innerHTML = presentHTML;
 };
 
@@ -154,21 +175,17 @@ const displayPresentTrips = () => {
 
 
 // const getRandomTraveler = () => {
-
 // }
 
 
-// const displayYearlyExpense = () => {
-//   let travelerSpecificTrips = globalTrip.getTripDataById(globalTraveler.id);
-//   let yearlyCost = globalTrip.getTotalSpentThisYear(travelerSpecificTrips);
-//   yearlyExpense.innerHTML = `🤑 You've spent $${yearlyCost} this year 🤑`;
-// }
-// displayYearlyExpense();
+
+
+
 
 
 
 //QUERY SELECTORS
-// let yearlyExpense = document.querySelector('.yearly-expense');
+
 // let tripEstimate = document.querySelector('.trip-estimate');
 // let getEstimateBtn = document.querySelector('.get-estimate-btn');
 

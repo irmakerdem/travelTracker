@@ -17,6 +17,7 @@ class Traveler {
       return 'Invalid ID!';
     }
     this.allTrips = getTripData;
+    return this.allTrips
   }
 
   formatDate(day) {
@@ -62,9 +63,9 @@ class Traveler {
     const formatTodaysDate = this.formatDate(todaysDate);
 
     const presentTrips = this.allTrips.filter((trip) => {
-      console.log(typeof trip.date)
-      console.log(typeof formatTodaysDate)
-      console.log(trip.date === formatTodaysDate)
+      // console.log(typeof trip.date)
+      // console.log(typeof formatTodaysDate)
+      // console.log(trip.date === formatTodaysDate)
       return trip.date === formatTodaysDate
     })
  
