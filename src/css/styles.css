@@ -34,3 +34,7 @@ span {
 .traveler-trip-card {
   background-color: blue;
 }
+
+.column {
+  width: 30%;
+}

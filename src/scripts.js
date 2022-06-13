@@ -48,7 +48,8 @@ const displayEverything = () => {
 
     const travelerData = allTravelersData.find((traveler) => {
         // console.log(traveler.id)
-        return traveler.id === 47
+        return traveler.id === Math.ceil(Math.random() *50)
+        // Math.ceil(Math.random()* 49)
       });
     // console.log(travelerData);
 
@@ -165,6 +166,33 @@ window.addEventListener('load', displayEverything);
 
 //API FETCH FUNCTIONS
 
+// const postToTrips = () => {
+
+
+//   // let date = dateInput.value;
+//   // date = date.split('-');
+//   // date = date.join('/');
+//   // roomNumber = findIdHelper(id);
+//   // roomNumber = Number(roomNumber);
+//   let obj = { "userID": currentUser.id, "date": date, "roomNumber": roomNumber };
+
+
+
+// const tripObjectToPost = {
+//   id: Date.now(), 
+//   userID: traveler.id, 
+//   destinationID: ,
+//   travelers: ,
+//   date: ,
+//   duration: ,
+//   status: <string 'approved' or 'pending'>,
+//   suggestedActivities: array of strings
+// }
+
+
+// const obtainFormDestinationId = () =>{
+
+// }
 
 
 
