@@ -1,12 +1,25 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you tell webpack to use a CSS (SCSS) file
+//IMPORTS 
+import Traveler from './Traveler';
+import Destination from './Destination';
+import Trip from './Trip';
 import './css/styles.css';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/world-travel-logo.png'
 import './images/Cappadocia.jpg'
+// import {fetchAllData, addUserSleepData, addUserActivityData, addUserHydrationData, getSleepData, getHydrationData, getActivityData} from './apiCalls';
 
 
 console.log('This is the JavaScript entry file - your code begins here.');
+
+//GLOBAL VARIABLES
+
+
+//EVENT LISTENERS
+
+
+//API FETCH FUNCTIONS
+
+
+//FUNCTIONS
+
+
+//API POST FUNCTIONS
+
