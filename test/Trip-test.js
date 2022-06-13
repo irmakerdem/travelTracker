@@ -100,8 +100,10 @@ describe('Trip', () => {
   it('should be able to get past trips', () => {
     let miniTripData = tripData.filter((tripy, index) => index < 7);
 
-    expect(trip1.getPastTrips(miniTripData)).to.be.an('array');
-    expect(trip1.getPastTrips(miniTripData)).to.deep.equal([
+    trip1.getTotalSpentThisYear(miniTripData);
+    
+    expect(trip1.pastTrips).to.be.an('array');
+    expect(trip1.pastTrips).to.deep.equal([
       {
         "date": "2022/05/22",
         "destinationID": 22,

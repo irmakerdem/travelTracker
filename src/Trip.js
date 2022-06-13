@@ -1,3 +1,5 @@
+import Destination from "./Destination";
+
 class Trip {
   //tripData is an object
 
@@ -12,15 +14,19 @@ class Trip {
 
   constructor(tripData) {
     this.data = tripData;
+    this.pastTrips = [];
+    this.presentTrips = [];
+    this.upcomingTrips = [];
+    this.pendingTrips = [];
   }
 
-  getTripDataById(id) {
-    let tripData = this.data.filter(tripInfo => tripInfo.userID === id);
-    if (tripData.length === 0) {
-      return 'Invalid ID!';
-    }
-    return tripData;
-  }
+  // getTripDataById(id) {
+  //   let tripData = this.data.filter(tripInfo => tripInfo.userID === id);
+  //   if (tripData.length === 0) {
+  //     return 'Invalid ID!';
+  //   }
+  //   return tripData;
+  // }
 
   getCurrentYear() {
     let today = new Date();
@@ -28,65 +34,30 @@ class Trip {
     return yyyy;
   }
 
-  getTotalSpentThisYear(destinationData) {
+  getTotalSpentThisYear(travelerId, allDestinations) {
+    // console.log(allDestinations)
     const agentFee = 1.1;
     const currentYear = this.getCurrentYear();
 
-    const yearlyCost = destinationData.reduce((total, dest) => {
-      this.data.forEach((trip) => {
-        if(dest.id === trip.destinationID && trip.date.includes(currentYear)) {
-          let lodgingCost = dest.estimatedLodgingCostPerDay * trip.duration;
-          let flightCost = dest.estimatedFlightCostPerPerson * trip.travelers;
-          total += lodgingCost;
-          total += flightCost;
-        }
-      });
-      return Number((total * agentFee).toFixed(2));
-    }, 0);
-    return yearlyCost;
+    const travelerSpecificTrips = this.data.filter(trip => trip.userID === travelerId)
+
+    const yearlyExpenses = travelerSpecificTrips.reduce((total, trip) => {
+      let getDestinations = allDestinations.find(destination => trip.destinationID === destination.id)
+
+      if(trip.date.includes(currentYear)) {
+        let lodgingCost = getDestinations.estimatedLodgingCostPerDay * trip.duration;
+        let flightCost = getDestinations.estimatedFlightCostPerPerson * trip.travelers;
+   
+        total += lodgingCost;
+        total += flightCost;
+      }
+      return total
+    },0)
+    return Number((yearlyExpenses * agentFee).toFixed(2));
   }
+
+
   
-  formatDate(day) {
-    let dd = String(day.getDate()).padStart(2, '0');
-    let mm = String(day.getMonth() + 1).padStart(2, '0');
-    let yyyy = day.getFullYear();
-    let formattedDay = yyyy + '/' + mm + '/' + dd;
-    return formattedDay;
-  }
-
-  getPastTrips(travellerTrips) {
-    const todaysDate = new Date();
-    const formatTodaysDate = this.formatDate(todaysDate);
-
-    const pastTrips = travellerTrips.filter(trip => trip.date < formatTodaysDate);
-
-    return pastTrips;
-  }
-
-  getUpcomingTrips(travellerTrips) {
-    const todaysDate = new Date();
-    const formatTodaysDate = this.formatDate(todaysDate);
-
-    const upcomingTrips = travellerTrips.filter(trip => trip.date > formatTodaysDate);
-  
-    return upcomingTrips;
-  }
-
-  getPendingTrips(travellerTrips) {
-    const pendingTrips = travellerTrips.filter(trip => trip.status === "pending");
-
-    return pendingTrips;
-  }
-
-  getPresentTrips(travellerTrips) {
-    const todaysDate = new Date();
-    const formatTodaysDate = this.formatDate(todaysDate);
-
-    const presentTrips = travellerTrips.filter(trip => trip.date === formatTodaysDate);
- 
-    return presentTrips;
-  }
-
   getSingleTripCost(destinationData, ourId, ourDuration, ourTravelers) {
     const agentFee = 1.1;
 
@@ -104,13 +75,6 @@ class Trip {
   }
 }
 
-//   sortAllTrips(travelerData) {
-//     //make an empty trips array in traveler?
-//     const sortedTrips = travelerData.trips.sort((tripA, tripB) => {
-//       return new Date(tripB.date) - new Date(tripA.date)
-//     })
-//     travelerData.trips = sortedTrips;
-// }
 
   // formatDatesList(daylist) {
   //   let formattedDaylist = daylist.map(day => {
