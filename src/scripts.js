@@ -46,9 +46,12 @@ const displayEverything = () => {
     allTravelersData = response[0].travelers
  
     allTripsData = response[1].trips
-    const sortedTrips = allTripsData.sort((tripA, tripB) => {
-      return new Date(tripB.date) - new Date(tripA.date)
-    })
+    
+    // const sortedTrips = allTripsData.sort((tripA, tripB) => {
+    //   return new Date(tripB.date) - new Date(tripA.date)
+    // })
+    const sortedTrips = allTripsData.sort((tripA, tripB) => new Date(tripB.date) - new Date(tripA.date))
+    
     allTripsData = sortedTrips;
 
     allDestinationsData = response[2].destinations
@@ -80,6 +83,11 @@ const displayEverything = () => {
   })
 }
 
+// const sortTripsByDate = (something) => {
+//   return something.sort((tripA, tripB) => new Date(tripB.date) - new Date(tripA.date))
+// }
+
+
 const postToTrips = (event) => {
   event.preventDefault();
   const matchedDestinationId = allDestinationsData.find(destination => formDestinations.value === destination.destination);
@@ -104,6 +112,13 @@ const postToTrips = (event) => {
     trip.pendingTrips.push(data.newTrip)
     traveler.allTrips.push(data.newTrip)
     displayPendingTrips(vacations.getDestinations(traveler.allTrips))
+    displayUpcomingTrips(vacations.getDestinations(traveler.allTrips))
+    displayPresentTrips(vacations.getDestinations(traveler.allTrips))
+    // let resortByDate = sortTripsByDate(vacations.getDestinations(traveler.allTrips))
+    // console.log("before", resortByDate)
+    // displayUpcomingTrips(resortByDate)
+    // console.log("after", resortByDate)
+    /////////////
   })
 }
 
