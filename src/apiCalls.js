@@ -14,13 +14,14 @@ const allDestinationsPromises = getPromise('http://localhost:3001/api/v1/destina
 
 //POST REQUESTS
 let apiPostTrip = (tripObjectToPost) => {
-  console.log("postTrip")
+  // console.log("postTrip")
   return fetch('http://localhost:3001/api/v1/trips', {
     method: 'POST',
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(tripObjectToPost)
   })
-  .then(response => console.log('Post is a success!!! 🥳', response))
+  .then(response => response.json())
+  // .then(response => console.log('Post is a success!!! 🥳', response))
 };
 
 export {allTravelPromises, allTripsPromises, allDestinationsPromises, apiPostTrip}

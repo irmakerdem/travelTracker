@@ -14,6 +14,8 @@ let allTravelersData;
 let allDestinationsData;
 let traveler;
 let trip;
+let travelerSpecificDestinations;
+let vacations;
 
 
 //QUERY SELECTORS
@@ -24,20 +26,21 @@ let pendingTripsBox = document.querySelector('.pending-trips-container');
 
 let yearlyExpense = document.querySelector('.yearly-expense');
 let travelerName = document.querySelector('.traveler-name');
+
 let formDestinations = document.querySelector('#formDestinations');
 let formTravelers = document.querySelector('#formTravelers');
 let formDays = document.querySelector('#formDays');
 let formDate = document.querySelector('#formDate');
 
 let controlledForm = document.querySelector('.form');
+let tripEstimate = document.querySelector('.trip-estimate');
+let bookTripBtn = document.querySelector('.book-trip-btn');
+let getEstimateBtn = document.querySelector('.get-estimate-btn');
 
 
 
-// let tripEstimate = document.querySelector('.trip-estimate');
 
-
-
-
+//FUNCTIONS
 const displayEverything = () => {
   Promise.all(
     [allTravelPromises, allTripsPromises, allDestinationsPromises]
@@ -73,8 +76,8 @@ const displayEverything = () => {
     displayTravelerName();
     displayYearlyExpense();
 
-    let vacations = new Destination(allDestinationsData);
-    let travelerSpecificDestinations = vacations.getDestinations(travelerSpecificTripData);
+    vacations = new Destination(allDestinationsData);
+    travelerSpecificDestinations = vacations.getDestinations(travelerSpecificTripData);
 
     displayPastTrips(travelerSpecificDestinations);
     displayUpcomingTrips(travelerSpecificDestinations);
@@ -85,7 +88,7 @@ const displayEverything = () => {
 
 const postToTrips = (event) => {
   event.preventDefault();
-  console.log(event)
+  // console.log(event)
   const matchedDestinationId = allDestinationsData.find(destination => formDestinations.value === destination.destination);
 
   let formattedDate = formDate.value;
@@ -102,19 +105,17 @@ const postToTrips = (event) => {
       status: 'pending',
       suggestedActivities: []
     }
-    console.log(tripObjectToPost)
-    apiPostTrip(tripObjectToPost);
+    // console.log(tripObjectToPost)
+    apiPostTrip(tripObjectToPost)
+    .then(data => {
+      console.log(data)
+      trip.pendingTrips.push(data.newTrip)
+      traveler.allTrips.push(data.newTrip)
+      // destination.getDestinations(traveler.allTrips)
+      console.log(travelerSpecificDestinations)
+      displayPendingTrips(vacations.getDestinations(traveler.allTrips))
+    })
 }
-  
-
-
-// const displayTripCostEstimate = () => {
-//   let tripCost = globalTrip.getSingleTripCost()
-//   tripEstimate.innerHTML = `Trip Request's Estimate is $${tripCost}*`;
-// }
-// displayTripCostEstimate();
-
-
 
 const populateDestinationDropDown = (destData) => {
   let uniqueDestinations = destData.reduce((acc, cur) => {
@@ -134,6 +135,15 @@ const displayUniqueDestinations = (uniqueDestinations) => {
 }
 
 
+const displayTripCostEstimate = (event) => {
+  event.preventDefault();
+  bookTripBtn.classList.remove('hidden');
+  getEstimateBtn.classList.add('hidden');
+  tripEstimate.innerHTML = `Trip Request's Estimate is $${'44 million'}*<br>
+  <span tabindex="0">*including 10% travel agent fee</span>`;
+}
+
+
 
 const displayYearlyExpense = () => {
   yearlyExpense.innerHTML = `${trip.getTotalSpentThisYear(traveler.id, allDestinationsData)}`;
@@ -150,12 +160,12 @@ const displayPastTrips = (matchingDestinations) => {
     // console.log(trip)
    let matched = matchingDestinations.find(destination => trip.id === destination.tripId);
    pastHTML += `<div class="traveler-trip-card" id="${trip.id}">
-                    <img alt="${matched.alt}" src="${matched.image}">
-                    <p>Destination: ${matched.name}</p>
-                    <p>Start Date: ${trip.date}</p>
-                    <p>Duration: ${trip.duration}</p>
-                    <p>Travelers: ${trip.travelers}</p>
-                    <p id="trip-status">Status: <b>${trip.status}</b></p>
+                    <img alt="${matched.alt}" src="${matched.image}" tabindex="0">
+                    <p tabindex="0">Destination: ${matched.name}</p>
+                    <p tabindex="0">Start Date: ${trip.date}</p>
+                    <p tabindex="0">Duration: ${trip.duration}</p>
+                    <p tabindex="0">Travelers: ${trip.travelers}</p>
+                    <p id="trip-status" tabindex="0">Status: <b>${trip.status}</b></p>
                   </div><br>`
   });
   pastTripsBox.innerHTML = pastHTML;
@@ -217,29 +227,12 @@ const displayPresentTrips = (matchingDestinations) => {
 };
 
 
+
 //EVENT LISTENERS
 window.addEventListener('load', displayEverything);
-controlledForm.onsubmit = postToTrips;
-
-
-
-
-
-
-
-
-
-//API FETCH FUNCTIONS
-
-//API POST FUNCTIONS
-
-//FUNCTIONS
-
-
-
-
-
-
-
-
-
+// controlledForm.onsubmit = postToTrips;
+bookTripBtn.addEventListener('click', function(event) {
+  event.preventDefault()
+  postToTrips(event)
+});
+getEstimateBtn.addEventListener('click', displayTripCostEstimate);

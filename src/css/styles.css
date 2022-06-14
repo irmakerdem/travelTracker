@@ -55,3 +55,7 @@ h4, h5 {
 h4 {
   margin-bottom: 0;
 }
+
+.hidden {
+  display: none;
+}

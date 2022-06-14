@@ -19,7 +19,7 @@ class Trip {
     const agentFee = 1.1;
     const currentYear = this.getCurrentYear();
 
-    const travelerSpecificTrips = this.data.filter(trip => trip.userID === travelerId)
+    const travelerSpecificTrips = this.data.filter(trip => trip.userID === travelerId);
 
     const yearlyExpenses = travelerSpecificTrips.reduce((total, trip) => {
       let getDestinations = allDestinations.find(destination => trip.destinationID === destination.id);
