@@ -47,17 +47,15 @@ const displayEverything = () => {
  
     allTripsData = response[1].trips
     
-    // const sortedTrips = allTripsData.sort((tripA, tripB) => {
-    //   return new Date(tripB.date) - new Date(tripA.date)
-    // })
-    const sortedTrips = allTripsData.sort((tripA, tripB) => new Date(tripB.date) - new Date(tripA.date))
-    allTripsData = sortedTrips;
+    // const sortedTrips = allTripsData.sort((tripA, tripB) => new Date(tripB.date) - new Date(tripA.date))
+    // allTripsData = sortedTrips;
+    sortTripsByDate();
 
     allDestinationsData = response[2].destinations
     populateDestinationDropDown(allDestinationsData);
     
     const travelerData = allTravelersData.find((traveler) => {
-      return traveler.id === 47
+      return traveler.id === 42
       // return traveler.id === Math.ceil(Math.random() *50) 
     });
  
@@ -82,9 +80,11 @@ const displayEverything = () => {
   })
 }
 
-// const sortTripsByDate = (something) => {
-//   return something.sort((tripA, tripB) => new Date(tripB.date) - new Date(tripA.date))
-// }
+const sortTripsByDate = () => {
+  const sortedTrips = allTripsData.sort((tripA, tripB) => new Date(tripB.date) - new Date(tripA.date))
+  allTripsData = sortedTrips;
+}
+
 
 
 const postToTrips = (event) => {
@@ -110,6 +110,8 @@ const postToTrips = (event) => {
   .then(data => {
     trip.pendingTrips.push(data.newTrip)
     traveler.allTrips.push(data.newTrip)
+    allTripsData = traveler.allTrips
+    sortTripsByDate();
     displayPendingTrips(vacations.getDestinations(traveler.allTrips))
     displayUpcomingTrips(vacations.getDestinations(traveler.allTrips))
     displayPresentTrips(vacations.getDestinations(traveler.allTrips))
