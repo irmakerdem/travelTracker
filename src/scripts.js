@@ -31,7 +31,6 @@ let formTravelers = document.querySelector('#formTravelers');
 let formDays = document.querySelector('#formDays');
 let formDate = document.querySelector('#formDate');
 
-// let controlledForm = document.querySelector('.form');
 let tripEstimate = document.querySelector('.trip-estimate');
 let bookTripBtn = document.querySelector('.book-trip-btn');
 let getEstimateBtn = document.querySelector('.get-estimate-btn');
@@ -43,15 +42,10 @@ const displayEverything = () => {
     [allTravelPromises, allTripsPromises, allDestinationsPromises]
   )
   .then(response => {
-    allTravelersData = response[0].travelers
- 
-    allTripsData = response[1].trips
-    
-    // const sortedTrips = allTripsData.sort((tripA, tripB) => new Date(tripB.date) - new Date(tripA.date))
-    // allTripsData = sortedTrips;
+    allTravelersData = response[0].travelers;
+    allTripsData = response[1].trips;
     sortTripsByDate();
-
-    allDestinationsData = response[2].destinations
+    allDestinationsData = response[2].destinations;
     populateDestinationDropDown(allDestinationsData);
     
     const travelerData = allTravelersData.find((traveler) => {
@@ -62,30 +56,33 @@ const displayEverything = () => {
     traveler = new Traveler(travelerData);
     let travelerSpecificTripData = traveler.getTravelerSpecificTripData(allTripsData);
     trip = new Trip(allTripsData);
-
-    traveler.getPastTrips();
-    traveler.getUpcomingTrips();
-    traveler.getPendingTrips();
-    traveler.getPresentTrips();
+    obtainAllTripTypes();
     displayTravelerName();
     displayYearlyExpense();
-
-    vacations = new Destination(allDestinationsData);
-    travelerSpecificDestinations = vacations.getDestinations(travelerSpecificTripData);
-
-    displayPastTrips(travelerSpecificDestinations);
-    displayUpcomingTrips(travelerSpecificDestinations);
-    displayPendingTrips(travelerSpecificDestinations);
-    displayPresentTrips(travelerSpecificDestinations);
+    displayAllTripTypes(travelerSpecificTripData);
   })
 }
 
-const sortTripsByDate = () => {
-  const sortedTrips = allTripsData.sort((tripA, tripB) => new Date(tripB.date) - new Date(tripA.date))
-  allTripsData = sortedTrips;
+const displayAllTripTypes = (travelerSpecificTripData) => {
+  vacations = new Destination(allDestinationsData);
+  travelerSpecificDestinations = vacations.getDestinations(travelerSpecificTripData);
+  displayPastTrips(travelerSpecificDestinations);
+  displayUpcomingTrips(travelerSpecificDestinations);
+  displayPendingTrips(travelerSpecificDestinations);
+  displayPresentTrips(travelerSpecificDestinations);
 }
 
+const obtainAllTripTypes = () => {
+  traveler.getPastTrips();
+  traveler.getUpcomingTrips();
+  traveler.getPendingTrips();
+  traveler.getPresentTrips();
+}
 
+const sortTripsByDate = () => {
+  const sortedTrips = allTripsData.sort((tripA, tripB) => new Date(tripB.date) - new Date(tripA.date));
+  allTripsData = sortedTrips;
+}
 
 const postToTrips = (event) => {
   event.preventDefault();
@@ -108,14 +105,14 @@ const postToTrips = (event) => {
 
   apiPostTrip(tripObjectToPost)
   .then(data => {
-    trip.pendingTrips.push(data.newTrip)
-    traveler.allTrips.push(data.newTrip)
-    allTripsData = traveler.allTrips
+    trip.pendingTrips.push(data.newTrip);
+    traveler.allTrips.push(data.newTrip);
+    allTripsData = traveler.allTrips;
     sortTripsByDate();
-    displayPendingTrips(vacations.getDestinations(traveler.allTrips))
-    displayUpcomingTrips(vacations.getDestinations(traveler.allTrips))
-    displayPresentTrips(vacations.getDestinations(traveler.allTrips))
-    displayPastTrips(vacations.getDestinations(traveler.allTrips))
+    displayPendingTrips(vacations.getDestinations(traveler.allTrips));
+    displayUpcomingTrips(vacations.getDestinations(traveler.allTrips));
+    displayPresentTrips(vacations.getDestinations(traveler.allTrips));
+    displayPastTrips(vacations.getDestinations(traveler.allTrips));
   })
 }
 
@@ -141,13 +138,13 @@ const displayTripCostEstimate = (event) => {
   bookTripBtn.classList.remove('hidden');
   getEstimateBtn.classList.add('hidden');
 
-  let getFormDestination = formDestinations.value
-  let getFormTravelers = formTravelers.value
-  let getFormDays = formDays.value
+  let getFormDestination = formDestinations.value;
+  let getFormTravelers = formTravelers.value;
+  let getFormDays = formDays.value;
 
-  let travelerLocationId = vacations.data.find(destination => destination.destination === getFormDestination)
+  let travelerLocationId = vacations.data.find(destination => destination.destination === getFormDestination);
 
-  let obtainSingleCost = trip.getSingleTripCost(vacations.data, travelerLocationId.id, getFormDays, getFormTravelers)
+  let obtainSingleCost = trip.getSingleTripCost(vacations.data, travelerLocationId.id, getFormDays, getFormTravelers);
 
   tripEstimate.innerHTML = `Trip Request's Estimate is $${obtainSingleCost}*<br>
   <span tabindex="0">*including 10% travel agent fee</span>`;
@@ -166,13 +163,13 @@ const displayPastTrips = (matchingDestinations) => {
   traveler.getPastTrips().forEach((trip) => {
    let matched = matchingDestinations.find(destination => trip.id === destination.tripId);
    pastHTML += `<div class="traveler-trip-card" id="${trip.id}">
-                    <img tabindex="0" alt="${matched.alt}" src="${matched.image}">
-                    <p tabindex="0">Destination: ${matched.name}</p>
-                    <p tabindex="0">Start Date: ${trip.date}</p>
-                    <p tabindex="0">Duration: ${trip.duration}</p>
-                    <p tabindex="0">Travelers: ${trip.travelers}</p>
-                    <p tabindex="0" id="trip-status">Status: <i>${trip.status}</i></p>
-                  </div><br>`
+                  <img tabindex="0" alt="${matched.alt}" src="${matched.image}">
+                  <p tabindex="0">Destination: ${matched.name}</p>
+                  <p tabindex="0">Start Date: ${trip.date}</p>
+                  <p tabindex="0">Duration: ${trip.duration}</p>
+                  <p tabindex="0">Travelers: ${trip.travelers}</p>
+                  <p tabindex="0" id="trip-status">Status: <i>${trip.status}</i></p>
+                </div><br>`
   });
   pastTripsBox.innerHTML = pastHTML;
 }
@@ -182,13 +179,13 @@ const displayUpcomingTrips = (matchingDestinations) => {
   traveler.getUpcomingTrips().forEach((trip) => {
     let matched = matchingDestinations.find(destination => trip.id === destination.tripId);
     upcomingHTML += `<div class="traveler-trip-card" id="${trip.id}">
-                    <img tabindex="0" alt="${matched.alt}" src="${matched.image}">
-                    <p tabindex="0">Destination: ${matched.name}</p>
-                    <p tabindex="0">Start Date: ${trip.date}</p>
-                    <p tabindex="0">Duration: ${trip.duration}</p>
-                    <p tabindex="0">Travelers: ${trip.travelers}</p>
-                    <p tabindex="0" id="trip-status">Status: <i>${trip.status}</i></p>
-                  </div><br>`
+                      <img tabindex="0" alt="${matched.alt}" src="${matched.image}">
+                      <p tabindex="0">Destination: ${matched.name}</p>
+                      <p tabindex="0">Start Date: ${trip.date}</p>
+                      <p tabindex="0">Duration: ${trip.duration}</p>
+                      <p tabindex="0">Travelers: ${trip.travelers}</p>
+                      <p tabindex="0" id="trip-status">Status: <i>${trip.status}</i></p>
+                    </div><br>`
   });
   upcomingTripsBox.innerHTML = upcomingHTML;
 }
@@ -198,13 +195,13 @@ const displayPendingTrips = (matchingDestinations) => {
   traveler.getPendingTrips().forEach((trip) => {
     let matched = matchingDestinations.find(destination => trip.id === destination.tripId);
     pendingHTML += `<div class="traveler-trip-card" id="${trip.id}">
-                    <img tabindex="0" alt="${matched.alt}" src="${matched.image}">
-                    <p tabindex="0">Destination: ${matched.name}</p>
-                    <p tabindex="0">Start Date: ${trip.date}</p>
-                    <p tabindex="0">Duration: ${trip.duration}</p>
-                    <p tabindex="0">Travelers: ${trip.travelers}</p>
-                    <p tabindex="0" id="trip-status">Status: <i>${trip.status}</i></p>
-                  </div><br>`
+                      <img tabindex="0" alt="${matched.alt}" src="${matched.image}">
+                      <p tabindex="0">Destination: ${matched.name}</p>
+                      <p tabindex="0">Start Date: ${trip.date}</p>
+                      <p tabindex="0">Duration: ${trip.duration}</p>
+                      <p tabindex="0">Travelers: ${trip.travelers}</p>
+                      <p tabindex="0" id="trip-status">Status: <i>${trip.status}</i></p>
+                    </div><br>`
   });
   pendingTripsBox.innerHTML = pendingHTML;
 }
@@ -214,13 +211,13 @@ const displayPresentTrips = (matchingDestinations) => {
   traveler.getPresentTrips().forEach((trip) => {
     let matched = matchingDestinations.find(destination => trip.id === destination.tripId);
     presentHTML += `<div class="traveler-trip-card" id="${trip.id}">
-                    <img tabindex="0" alt="${matched.alt}" src="${matched.image}">
-                    <p tabindex="0">Destination: ${matched.name}</p>
-                    <p tabindex="0">Start Date: ${trip.date}</p>
-                    <p tabindex="0">Duration: ${trip.duration}</p>
-                    <p tabindex="0">Travelers: ${trip.travelers}</p>
-                    <p tabindex="0" id="trip-status">Status: <i>${trip.status}</i></p>
-                  </div><br>`
+                      <img tabindex="0" alt="${matched.alt}" src="${matched.image}">
+                      <p tabindex="0">Destination: ${matched.name}</p>
+                      <p tabindex="0">Start Date: ${trip.date}</p>
+                      <p tabindex="0">Duration: ${trip.duration}</p>
+                      <p tabindex="0">Travelers: ${trip.travelers}</p>
+                      <p tabindex="0" id="trip-status">Status: <i>${trip.status}</i></p>
+                    </div><br>`
   });
   presentTripsBox.innerHTML = presentHTML;
 }
