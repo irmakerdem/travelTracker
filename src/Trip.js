@@ -1,5 +1,3 @@
-import Destination from "./Destination";
-
 class Trip {
   constructor(tripData) {
     this.data = tripData;
