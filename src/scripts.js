@@ -37,6 +37,33 @@ let getEstimateBtn = document.querySelector('.get-estimate-btn');
 
 
 //FUNCTIONS
+
+let loginForm = document.querySelector('.login-form');
+// let loginSubmitBtn = document.querySelector('.login-submit-btn');
+let loginUsername = document.querySelector('#usernameInput');
+let loginPassword = document.querySelector('#passwordInput');
+
+const checkLogin = (event) => {
+  event.preventDefault();
+  let username = loginUsername.value;
+  let password = loginPassword.value;
+
+  // console.log("useeee", username)
+  // console.log("passsssss", password)
+  let splitUsername = username.split(/(\d+)/);
+
+  if(password === 'travel' && splitUsername[0] === 'traveler' && splitUsername[1] > 0 && splitUsername[1] < 51) {
+    loginForm.classList.add('hidden');
+  } else {
+    alert(`Invalid username and/or password`)
+  }
+}
+
+loginForm.addEventListener('submit', checkLogin);
+
+
+
+
 const displayAllTripTypes = (travelerSpecificTripData) => {
   vacations = new Destination(allDestinationsData);
   travelerSpecificDestinations = vacations.getDestinations(travelerSpecificTripData);

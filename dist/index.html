@@ -10,6 +10,20 @@
     <title>Travel Tracker</title>
   </head> 
   <body>
+
+    
+    <!-- <div id="login-error-msg-holder">
+      <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
+    </div> -->
+    <form class="login-form">
+      <h3 class="login-header" tabindex="0">Travel Tracker - Login</h3>
+      <label tabindex="0" class="login-input" for="usernameInput">Username:</label><br>
+      <input class="login-input" id="usernameInput" type="text" placeholder="username" required/><br>
+      <label tabindex="0" class="login-input" for="passwordInput">Password:</label><br>
+      <input class="login-input" id="passwordInput" type="password" placeholder="password" required/><br>
+      <button class="login-submit-btn">Submit</button>
+    </form>
+
     <main>
       <h1 tabindex="0">Travel Tracker</h1>
       <p class="error-message"></p>
@@ -28,8 +42,8 @@
         <label class="form-info" for="formDestinations" tabindex="0">Destination:</label><br>
         <select class="form-info" id="formDestinations" required>
         </select><br><br>
-        <button class="get-estimate-btn" id="">Get Estimate</button>
-        <button class="book-trip-btn hidden" id="">Book Trip</button>
+        <button class="get-estimate-btn">Get Estimate</button>
+        <button class="book-trip-btn hidden">Book Trip</button>
       </form>
       <p class="trip-estimate" tabindex="0">Trip Request's Estimate is $0*<br>
         <span class="asterisk-statement">*including 10% travel agent fee</span>
