@@ -37,32 +37,6 @@ let getEstimateBtn = document.querySelector('.get-estimate-btn');
 
 
 //FUNCTIONS
-const displayEverything = () => {
-  Promise.all(
-    [allTravelPromises, allTripsPromises, allDestinationsPromises]
-  )
-  .then(response => {
-    allTravelersData = response[0].travelers;
-    allTripsData = response[1].trips;
-    sortTripsByDate();
-    allDestinationsData = response[2].destinations;
-    populateDestinationDropDown(allDestinationsData);
-    
-    const travelerData = allTravelersData.find((traveler) => {
-      return traveler.id === 42
-      // return traveler.id === Math.ceil(Math.random() *50) 
-    });
- 
-    traveler = new Traveler(travelerData);
-    let travelerSpecificTripData = traveler.getTravelerSpecificTripData(allTripsData);
-    trip = new Trip(allTripsData);
-    obtainAllTripTypes();
-    displayTravelerName();
-    displayYearlyExpense();
-    displayAllTripTypes(travelerSpecificTripData);
-  })
-}
-
 const displayAllTripTypes = (travelerSpecificTripData) => {
   vacations = new Destination(allDestinationsData);
   travelerSpecificDestinations = vacations.getDestinations(travelerSpecificTripData);
@@ -220,6 +194,32 @@ const displayPresentTrips = (matchingDestinations) => {
                     </div><br>`
   });
   presentTripsBox.innerHTML = presentHTML;
+}
+
+const displayEverything = () => {
+  Promise.all(
+    [allTravelPromises, allTripsPromises, allDestinationsPromises]
+  )
+  .then(response => {
+    allTravelersData = response[0].travelers;
+    allTripsData = response[1].trips;
+    sortTripsByDate();
+    allDestinationsData = response[2].destinations;
+    populateDestinationDropDown(allDestinationsData);
+    
+    const travelerData = allTravelersData.find((traveler) => {
+      return traveler.id === 12
+      // return traveler.id === Math.ceil(Math.random() *50) 
+    });
+ 
+    traveler = new Traveler(travelerData);
+    let travelerSpecificTripData = traveler.getTravelerSpecificTripData(allTripsData);
+    trip = new Trip(allTripsData);
+    obtainAllTripTypes();
+    displayTravelerName();
+    displayYearlyExpense();
+    displayAllTripTypes(travelerSpecificTripData);
+  })
 }
 
 
