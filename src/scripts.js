@@ -142,7 +142,7 @@ const displayPastTrips = (matchingDestinations) => {
                   <p tabindex="0">Start Date: ${trip.date}</p>
                   <p tabindex="0">Duration: ${trip.duration}</p>
                   <p tabindex="0">Travelers: ${trip.travelers}</p>
-                  <p tabindex="0" id="trip-status">Status: <i>${trip.status}</i></p>
+                  <p tabindex="0" class="trip-status">Status: <i>${trip.status}</i></p>
                 </div><br>`
   });
   pastTripsBox.innerHTML = pastHTML;
@@ -158,7 +158,7 @@ const displayUpcomingTrips = (matchingDestinations) => {
                       <p tabindex="0">Start Date: ${trip.date}</p>
                       <p tabindex="0">Duration: ${trip.duration}</p>
                       <p tabindex="0">Travelers: ${trip.travelers}</p>
-                      <p tabindex="0" id="trip-status">Status: <i>${trip.status}</i></p>
+                      <p tabindex="0" class="trip-status">Status: <i>${trip.status}</i></p>
                     </div><br>`
   });
   upcomingTripsBox.innerHTML = upcomingHTML;
@@ -174,7 +174,7 @@ const displayPendingTrips = (matchingDestinations) => {
                       <p tabindex="0">Start Date: ${trip.date}</p>
                       <p tabindex="0">Duration: ${trip.duration}</p>
                       <p tabindex="0">Travelers: ${trip.travelers}</p>
-                      <p tabindex="0" id="trip-status">Status: <i>${trip.status}</i></p>
+                      <p tabindex="0" class="trip-status">Status: <i>${trip.status}</i></p>
                     </div><br>`
   });
   pendingTripsBox.innerHTML = pendingHTML;
@@ -190,7 +190,7 @@ const displayPresentTrips = (matchingDestinations) => {
                       <p tabindex="0">Start Date: ${trip.date}</p>
                       <p tabindex="0">Duration: ${trip.duration}</p>
                       <p tabindex="0">Travelers: ${trip.travelers}</p>
-                      <p tabindex="0" id="trip-status">Status: <i>${trip.status}</i></p>
+                      <p tabindex="0" class="trip-status">Status: <i>${trip.status}</i></p>
                     </div><br>`
   });
   presentTripsBox.innerHTML = presentHTML;
