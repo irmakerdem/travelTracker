@@ -53,6 +53,10 @@ h5 {
   font-size: x-small;
 }
 
+.login-form {
+  margin-top: 15%;
+}
+
 .hidden {
   display: none;
 }
