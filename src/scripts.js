@@ -55,7 +55,8 @@ const displayEverything = () => {
     populateDestinationDropDown(allDestinationsData);
     
     const travelerData = allTravelersData.find((traveler) => {
-      return traveler.id === Math.ceil(Math.random() *50) 
+      return traveler.id === 47
+      // return traveler.id === Math.ceil(Math.random() *50) 
     });
  
     traveler = new Traveler(travelerData);
@@ -127,7 +128,16 @@ const displayTripCostEstimate = (event) => {
   event.preventDefault();
   bookTripBtn.classList.remove('hidden');
   getEstimateBtn.classList.add('hidden');
-  tripEstimate.innerHTML = `Trip Request's Estimate is $${'44 million'}*<br>
+
+  let getFormDestination = formDestinations.value
+  let getFormTravelers = formTravelers.value
+  let getFormDays = formDays.value
+
+  let travelerLocationId = vacations.data.find(destination => destination.destination === getFormDestination)
+
+  let obtainSingleCost = trip.getSingleTripCost(vacations.data, travelerLocationId.id, getFormDays, getFormTravelers)
+
+  tripEstimate.innerHTML = `Trip Request's Estimate is $${obtainSingleCost}*<br>
   <span tabindex="0">*including 10% travel agent fee</span>`;
 }
 
