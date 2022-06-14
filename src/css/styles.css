@@ -1,5 +1,6 @@
 * {
   font-family: 'Roboto', sans-serif;
+  /* border: solid red 2px; */
   text-align: center;
 }
 
@@ -41,10 +42,11 @@ body {
 
 h4, h5 {
   font-size: 20px;
+  margin-bottom: 0;
 }
 
-h4 {
-  margin-bottom: 0;
+h5 {
+  margin-top: 70px;
 }
 
 .asterisk-statement {
