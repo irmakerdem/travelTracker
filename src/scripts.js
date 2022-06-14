@@ -35,6 +35,7 @@ let tripEstimate = document.querySelector('.trip-estimate');
 let bookTripBtn = document.querySelector('.book-trip-btn');
 let getEstimateBtn = document.querySelector('.get-estimate-btn');
 
+let mainpage = document.querySelector('.main-page');
 
 //FUNCTIONS
 
@@ -54,6 +55,7 @@ const checkLogin = (event) => {
 
   if(password === 'travel' && splitUsername[0] === 'traveler' && splitUsername[1] > 0 && splitUsername[1] < 51) {
     loginForm.classList.add('hidden');
+    mainpage.classList.remove('hidden');
   } else {
     alert(`Invalid username and/or password`)
   }
