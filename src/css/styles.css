@@ -1,6 +1,6 @@
 * {
   font-family: 'Roboto', sans-serif;
-  border: solid red 2px;
+  /* border: solid red 2px; */
   text-align: center;
 }
 
@@ -8,13 +8,9 @@ body {
   background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
 }
 
-span {
-  font-size: x-small;
-}
-
 .trip-card-image, .cappadocia, img {
-  height: 15%;
-  width: 15%;
+  height: 90%;
+  width: 90%;
 }
 
 .logo {
@@ -22,7 +18,7 @@ span {
   width: 10%;
 }
 
-.get-estimate-btn, #formDate, #formDays, #formTravelers, #formDestinations {
+.get-estimate-btn, .book-trip-btn, #formDate, #formDays, #formTravelers, #formDestinations {
   cursor: pointer;
 }
 
@@ -31,6 +27,32 @@ span {
   justify-content: space-around;
 }
 
-.traveler-trip-card {
-  background-color: blue;
+.column {
+  width: 30%;
+}
+
+.traveler-name {
+  font-size: 24px;
+}
+
+.trip-type {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+h4, h5 {
+  font-size: 20px;
+  margin-bottom: 0;
+}
+
+h5 {
+  margin-top: 70px;
+}
+
+.asterisk-statement {
+  font-size: x-small;
+}
+
+.hidden {
+  display: none;
 }

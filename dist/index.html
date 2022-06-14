@@ -11,84 +11,81 @@
   </head> 
   <body>
     <main>
-      <h1>Travel Tracker</h1>
+      <h1 tabindex="0">Travel Tracker</h1>
       <p class="error-message"></p>
-      <img class="logo" src="./images/world-travel-logo.png" alt="plane traveling globe logo">
-      <h2>Welcome, <span class="traveler-name">name</span>! 👋</h2>
-      <h3>🤑 You've spent $<span class="yearly-expense"></span> this year 🤑</h3>
-      <form>
-        <h5>MAKE A REQUEST</h5><br>
-        <label class="formInfo" id="">Date:</label><br>
-        <input class="formInfo" id="formDate" type="date" placeholder="dd/mm/yyyy" required><br>
-        <label class="formInfo" id="">Number of Days:</label><br>
-        <input class="formInfo" id="formDays" type="number" placeholder="0" required><br>
-        <label class="formInfo" id="">Number of Travelers:</label><br>
-        <input class="formInfo" id="formTravelers" type="number" placeholder="0" required><br>
-        <label class="formInfo" id="">Destinations:</label><br>
-        <select class="formInfo" id="formDestinations" required>
-          <option value="choose">Choose A Destination:</option>
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
+      <img tabindex="0" class="logo" src="./images/world-travel-logo.png" alt="plane traveling globe logo">
+      <h2 tabindex="0">Welcome, <span class="traveler-name">name</span>!</h2>
+      <h3 tabindex="0">🤑 You've spent $<span class="yearly-expense"></span> this year 🤑</h3>
+      <form class="form">
+        <br>
+        <h4 tabindex="0">MAKE A TRIP REQUEST</h4><br>
+        <label class="form-info" for="formDate" tabindex="0">Date:</label><br>
+        <input class="form-info" id="formDate" type="date" placeholder="dd/mm/yyyy" required/><br>
+        <label class="form-info" for="formDays" tabindex="0">Number of Days:</label><br>
+        <input class="form-info" id="formDays" type="number" placeholder="0" required/><br>
+        <label class="form-info" for="formTravelers" tabindex="0">Number of Travelers:</label><br>
+        <input class="form-info" id="formTravelers" type="number" placeholder="0" required/><br>
+        <label class="form-info" for="formDestinations" tabindex="0">Destination:</label><br>
+        <select class="form-info" id="formDestinations" required>
         </select><br><br>
-        <input class="get-estimate-btn" id="" type="submit" value="Get Estimate">
+        <button class="get-estimate-btn" id="">Get Estimate</button>
+        <button class="book-trip-btn hidden" id="">Book Trip</button>
       </form>
-      <h6 class="trip-estimate">Trip Request's Estimate is $_______*<br>
-        <span>*including 10% travel agent fee</span>
-      </h6>
+      <p class="trip-estimate" tabindex="0">Trip Request's Estimate is $0*<br>
+        <span class="asterisk-statement">*including 10% travel agent fee</span>
+      </p>
       <section>
-        <h4>Your Trips</h4>
+        <h5 tabindex="0">YOUR TRIPS</h5>
           <div class="trips-container">
-            <div>
-              <h1>Past Trips</h1>
+            <div class="column">
+              <p class="trip-type" tabindex="0">Past Trips</p>
               <section class="past-trips-container">
                 <div class="traveler-trip-card">
-                  <img class="trip-card-image" src="./images/Cappadocia.jpg" alt="Cappadocia, Turkey photo">
+                  <img class="trip-card-image" src="" alt="">
                   <p>Destination: </p>
                   <p>Start Date: </p>
                   <p>Duration: </p>
                   <p>Travelers: </p>
-                  <p id="trip-status">Status: <b>APPROVED</b></p>
+                  <p id="trip-status">Status: </p>
                 </div>
               </section>
             </div>
-            <div>
-              <h1>Present Trips</h1>
+            <div class="column">
+              <p class="trip-type" tabindex="0">Present Trips</p>
               <section class="present-trips-container">
                 <div class="traveler-trip-card">
-                  <img class="trip-card-image" src="./images/Cappadocia.jpg" alt="Cappadocia, Turkey photo">
+                  <img class="trip-card-image" src="" alt="">
                   <p>Destination: </p>
                   <p>Start Date: </p>
                   <p>Duration: </p>
                   <p>Travelers: </p>
-                  <p id="trip-status">Status: <b>APPROVED</b></p>
+                  <p id="trip-status">Status: </p>
                 </div>
               </section>
             </div>
-            <div>
-              <h1>Upcoming Trips</h1>
+            <div class="column">
+              <p class="trip-type" tabindex="0">Upcoming Trips</p>
               <section class="upcoming-trips-container">
                 <div class="traveler-trip-card">
-                  <img class="trip-card-image" src="./images/Cappadocia.jpg" alt="Cappadocia, Turkey photo">
+                  <img class="trip-card-image" src="" alt="">
                   <p>Destination: </p>
                   <p>Start Date: </p>
                   <p>Duration: </p>
                   <p>Travelers: </p>
-                  <p id="trip-status">Status: <b>APPROVED</b></p>
+                  <p id="trip-status">Status: </p>
                 </div>
               </section>
             </div>
-            <div>
-              <h1>Pending Trips</h1>
+            <div class="column">
+              <p class="trip-type" tabindex="0">Pending Trips</p>
               <section class="pending-trips-container">
                 <div class="traveler-trip-card">
-                  <img class="trip-card-image" src="./images/Cappadocia.jpg" alt="Cappadocia, Turkey photo">
+                  <img class="trip-card-image" src="" alt="">
                   <p>Destination: </p>
                   <p>Start Date: </p>
                   <p>Duration: </p>
                   <p>Travelers: </p>
-                  <p id="trip-status">Status: <b>APPROVED</b></p>
+                  <p id="trip-status">Status: </p>
                 </div>
               </section>
             </div>
