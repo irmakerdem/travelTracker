@@ -25,6 +25,18 @@ describe('Trip', () => {
     expect(trip1.data).to.deep.equal(tripData);
   });
 
+  it('should start without any trips', () => {
+    expect(trip1.pastTrips).to.be.an('array');
+    expect(trip1.presentTrips).to.be.an('array');
+    expect(trip1.upcomingTrips).to.be.an('array');
+    expect(trip1.pendingTrips).to.be.an('array');
+
+    expect(trip1.pastTrips).to.deep.equal([]);
+    expect(trip1.presentTrips).to.deep.equal([]);
+    expect(trip1.upcomingTrips).to.deep.equal([]);
+    expect(trip1.pendingTrips).to.deep.equal([]);
+  });
+
   it('should be able to test whether the traveler id is valid and also return a message if it\'s not valid', () => {
     expect(trip1.getTripDataById(500)).to.equal('Invalid ID!');
   });

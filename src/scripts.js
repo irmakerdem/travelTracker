@@ -18,6 +18,10 @@ let vacations;
 
 
 //QUERY SELECTORS
+let loginForm = document.querySelector('.login-form');
+let loginUsername = document.querySelector('#usernameInput');
+let loginPassword = document.querySelector('#passwordInput');
+
 let pastTripsBox = document.querySelector('.past-trips-container');
 let presentTripsBox = document.querySelector('.present-trips-container');
 let upcomingTripsBox = document.querySelector('.upcoming-trips-container');
@@ -35,8 +39,26 @@ let tripEstimate = document.querySelector('.trip-estimate');
 let bookTripBtn = document.querySelector('.book-trip-btn');
 let getEstimateBtn = document.querySelector('.get-estimate-btn');
 
+let mainpage = document.querySelector('.main-page');
+
 
 //FUNCTIONS
+const checkLogin = (event) => {
+  event.preventDefault();
+  let username = loginUsername.value;
+  let password = loginPassword.value;
+
+  let splitUsername = username.split(/(\d+)/);
+
+  if(password === 'travel' && splitUsername[0] === 'traveler' && splitUsername[1] > 0 && splitUsername[1] < 51) {
+    loginForm.classList.add('hidden');
+    mainpage.classList.remove('hidden');
+    displayEverything(splitUsername[1]);
+  } else {
+    alert(`Invalid username and/or password`)
+  }
+}
+
 const displayAllTripTypes = (travelerSpecificTripData) => {
   vacations = new Destination(allDestinationsData);
   travelerSpecificDestinations = vacations.getDestinations(travelerSpecificTripData);
@@ -196,7 +218,7 @@ const displayPresentTrips = (matchingDestinations) => {
   presentTripsBox.innerHTML = presentHTML;
 }
 
-const displayEverything = () => {
+const displayEverything = (id) => {
   Promise.all(
     [allTravelPromises, allTripsPromises, allDestinationsPromises]
   )
@@ -208,8 +230,9 @@ const displayEverything = () => {
     populateDestinationDropDown(allDestinationsData);
     
     const travelerData = allTravelersData.find((traveler) => {
-      return traveler.id === 12
-      // return traveler.id === Math.ceil(Math.random() *50) 
+      console.log(typeof id)
+      console.log(traveler)
+      return traveler.id === Number(id)
     });
  
     traveler = new Traveler(travelerData);
@@ -224,7 +247,7 @@ const displayEverything = () => {
 
 
 //EVENT LISTENERS
-window.addEventListener('load', displayEverything);
+loginForm.addEventListener('submit', checkLogin);
 bookTripBtn.addEventListener('click', function(event) {
   event.preventDefault()
   postToTrips(event)
