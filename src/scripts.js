@@ -24,6 +24,7 @@ let pendingTripsBox = document.querySelector('.pending-trips-container');
 
 let yearlyExpense = document.querySelector('.yearly-expense');
 let travelerName = document.querySelector('.traveler-name');
+let formDestinations = document.querySelector('#formDestinations');
 
 // let tripEstimate = document.querySelector('.trip-estimate');
 // let getEstimateBtn = document.querySelector('.get-estimate-btn');
@@ -45,6 +46,7 @@ const displayEverything = () => {
     // console.log(allTripsData)
     allDestinationsData = response[2].destinations
     populateDestinationDropDown(allDestinationsData);
+    
 
     const travelerData = allTravelersData.find((traveler) => {
         // console.log(traveler.id)
@@ -82,9 +84,16 @@ const populateDestinationDropDown = (destData) => {
     }
     return acc;
   },[])
-  console.log(uniqueDestinations.sort())
-  return uniqueDestinations.sort();
+  displayUniqueDestinations(uniqueDestinations.sort());
 }
+
+const displayUniqueDestinations = (uniqueDestinations) => {
+  formDestinations.innerHTML = `<option value="choose">Choose A Destination:</option>`;
+  uniqueDestinations.forEach((dest) => {
+    formDestinations.innerHTML += `<option value="${dest}">${dest}</option>`
+  })
+}
+
 
 
 const displayYearlyExpense = () => {
