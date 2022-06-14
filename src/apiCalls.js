@@ -1,4 +1,4 @@
-//QUERY SELECTOR
+//QUERY SELECTORS
 let errorMessage = document.querySelector('.error-message');
 
 //FETCH REQUESTS
@@ -23,13 +23,4 @@ let apiPostTrip = (tripObjectToPost) => {
   .then(response => console.log('Post is a success!!! 🥳', response))
 };
 
-let apiPostDestination = (destinationObjectToPost) => {
-  return fetch('http://localhost:3001/api/v1/destinations', {
-    method: 'POST',
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(destinationObjectToPost)
-  })
-  .then(response => console.log('Post is a success!!! 🥳', response))
-};
-
-export {allTravelPromises, allTripsPromises, allDestinationsPromises, apiPostTrip, apiPostDestination}
+export {allTravelPromises, allTripsPromises, allDestinationsPromises, apiPostTrip}

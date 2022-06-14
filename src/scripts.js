@@ -5,7 +5,7 @@ import Trip from './Trip';
 import './css/styles.css';
 import './images/world-travel-logo.png';
 import './images/Cappadocia.jpg';
-import {allTravelPromises, allTripsPromises, allDestinationsPromises, apiPostTrip, apiPostDestination} from './apiCalls';
+import {allTravelPromises, allTripsPromises, allDestinationsPromises, apiPostTrip} from './apiCalls';
 
 
 //GLOBAL VARIABLES
@@ -108,7 +108,11 @@ const postToTrips = (event) => {
   
 
 
-
+// const displayTripCostEstimate = () => {
+//   let tripCost = globalTrip.getSingleTripCost()
+//   tripEstimate.innerHTML = `Trip Request's Estimate is $${tripCost}*`;
+// }
+// displayTripCostEstimate();
 
 
 
@@ -227,28 +231,10 @@ controlledForm.onsubmit = postToTrips;
 
 //API FETCH FUNCTIONS
 
-
-// const obtainFormDestinationId = () =>{
-
-// }
-
-
+//API POST FUNCTIONS
 
 //FUNCTIONS
 
-// const clearForm = () => {
-//   somethingggg.innerHTML = '';
-// }
-// clearForm();
-
-
-
-
-// const displayTripCostEstimate = () => {
-//   let tripCost = globalTrip.getSingleTripCost()
-//   tripEstimate.innerHTML = `Trip Request's Estimate is $${tripCost}*`;
-// }
-// displayTripCostEstimate();
 
 
 
@@ -256,5 +242,4 @@ controlledForm.onsubmit = postToTrips;
 
 
 
-//API POST FUNCTIONS
 
