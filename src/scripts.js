@@ -51,7 +51,6 @@ const displayEverything = () => {
     //   return new Date(tripB.date) - new Date(tripA.date)
     // })
     const sortedTrips = allTripsData.sort((tripA, tripB) => new Date(tripB.date) - new Date(tripA.date))
-    
     allTripsData = sortedTrips;
 
     allDestinationsData = response[2].destinations
@@ -114,11 +113,7 @@ const postToTrips = (event) => {
     displayPendingTrips(vacations.getDestinations(traveler.allTrips))
     displayUpcomingTrips(vacations.getDestinations(traveler.allTrips))
     displayPresentTrips(vacations.getDestinations(traveler.allTrips))
-    // let resortByDate = sortTripsByDate(vacations.getDestinations(traveler.allTrips))
-    // console.log("before", resortByDate)
-    // displayUpcomingTrips(resortByDate)
-    // console.log("after", resortByDate)
-    /////////////
+    displayPastTrips(vacations.getDestinations(traveler.allTrips))
   })
 }
 
