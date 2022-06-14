@@ -5,7 +5,7 @@ import Trip from './Trip';
 import './css/styles.css';
 import './images/world-travel-logo.png';
 import './images/Cappadocia.jpg';
-import {allTravelPromises, allTripsPromises, allDestinationsPromises} from './apiCalls';
+import {allTravelPromises, allTripsPromises, allDestinationsPromises, apiPostTrip, apiPostDestination} from './apiCalls';
 
 
 //GLOBAL VARIABLES
@@ -25,9 +25,16 @@ let pendingTripsBox = document.querySelector('.pending-trips-container');
 let yearlyExpense = document.querySelector('.yearly-expense');
 let travelerName = document.querySelector('.traveler-name');
 let formDestinations = document.querySelector('#formDestinations');
+let formTravelers = document.querySelector('#formTravelers');
+let formDays = document.querySelector('#formDays');
+let formDate = document.querySelector('#formDate');
+
+let controlledForm = document.querySelector('.form');
+
+
 
 // let tripEstimate = document.querySelector('.trip-estimate');
-// let getEstimateBtn = document.querySelector('.get-estimate-btn');
+
 
 
 
@@ -75,6 +82,34 @@ const displayEverything = () => {
     displayPresentTrips(travelerSpecificDestinations);
   })
 }
+
+const postToTrips = (event) => {
+  event.preventDefault();
+  console.log(event)
+  const matchedDestinationId = allDestinationsData.find(destination => formDestinations.value === destination.destination);
+
+  let formattedDate = formDate.value;
+  formattedDate = formattedDate.split('-');
+  formattedDate = formattedDate.join('/');
+
+    const tripObjectToPost = {
+      id: Date.now(), 
+      userID: traveler.id,
+      destinationID: matchedDestinationId.id,
+      travelers: Number(formTravelers.value),
+      date: formattedDate,
+      duration: Number(formDays.value),
+      status: 'pending',
+      suggestedActivities: []
+    }
+    console.log(tripObjectToPost)
+    apiPostTrip(tripObjectToPost);
+}
+  
+
+
+
+
 
 
 const populateDestinationDropDown = (destData) => {
@@ -180,7 +215,7 @@ const displayPresentTrips = (matchingDestinations) => {
 
 //EVENT LISTENERS
 window.addEventListener('load', displayEverything);
-//getEstimateBtn.addEventListener('click', );
+controlledForm.onsubmit = postToTrips;
 
 
 
@@ -191,29 +226,6 @@ window.addEventListener('load', displayEverything);
 
 
 //API FETCH FUNCTIONS
-
-// const postToTrips = () => {
-
-
-//   // let date = dateInput.value;
-//   // date = date.split('-');
-//   // date = date.join('/');
-//   // roomNumber = findIdHelper(id);
-//   // roomNumber = Number(roomNumber);
-//   let obj = { "userID": currentUser.id, "date": date, "roomNumber": roomNumber };
-
-
-
-// const tripObjectToPost = {
-//   id: Date.now(), 
-//   userID: traveler.id, 
-//   destinationID: ,
-//   travelers: ,
-//   date: ,
-//   duration: ,
-//   status: <string 'approved' or 'pending'>,
-//   suggestedActivities: array of strings
-// }
 
 
 // const obtainFormDestinationId = () =>{
