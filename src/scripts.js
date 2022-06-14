@@ -156,7 +156,7 @@ const displayPastTrips = (matchingDestinations) => {
                     <p>Duration: ${trip.duration}</p>
                     <p>Travelers: ${trip.travelers}</p>
                     <p id="trip-status">Status: <b>${trip.status}</b></p>
-                  </div>`
+                  </div><br>`
   });
   pastTripsBox.innerHTML = pastHTML;
 };
@@ -174,7 +174,7 @@ const displayUpcomingTrips = (matchingDestinations) => {
                     <p>Duration: ${trip.duration}</p>
                     <p>Travelers: ${trip.travelers}</p>
                     <p id="trip-status">Status: <b>${trip.status}</b></p>
-                  </div>`
+                  </div><br>`
   });
   upcomingTripsBox.innerHTML = upcomingHTML;
 };
@@ -192,7 +192,7 @@ const displayPendingTrips = (matchingDestinations) => {
                     <p>Duration: ${trip.duration}</p>
                     <p>Travelers: ${trip.travelers}</p>
                     <p id="trip-status">Status: <b>${trip.status}</b></p>
-                  </div>`
+                  </div><br>`
   });
   pendingTripsBox.innerHTML = pendingHTML;
 };
@@ -211,7 +211,7 @@ const displayPresentTrips = (matchingDestinations) => {
                     <p>Duration: ${trip.duration}</p>
                     <p>Travelers: ${trip.travelers}</p>
                     <p id="trip-status">Status: <b>${trip.status}</b></p>
-                  </div>`
+                  </div><br>`
   });
   presentTripsBox.innerHTML = presentHTML;
 };
