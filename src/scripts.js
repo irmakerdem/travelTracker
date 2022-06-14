@@ -18,6 +18,10 @@ let vacations;
 
 
 //QUERY SELECTORS
+let loginForm = document.querySelector('.login-form');
+let loginUsername = document.querySelector('#usernameInput');
+let loginPassword = document.querySelector('#passwordInput');
+
 let pastTripsBox = document.querySelector('.past-trips-container');
 let presentTripsBox = document.querySelector('.present-trips-container');
 let upcomingTripsBox = document.querySelector('.upcoming-trips-container');
@@ -37,20 +41,13 @@ let getEstimateBtn = document.querySelector('.get-estimate-btn');
 
 let mainpage = document.querySelector('.main-page');
 
+
 //FUNCTIONS
-
-let loginForm = document.querySelector('.login-form');
-// let loginSubmitBtn = document.querySelector('.login-submit-btn');
-let loginUsername = document.querySelector('#usernameInput');
-let loginPassword = document.querySelector('#passwordInput');
-
 const checkLogin = (event) => {
   event.preventDefault();
   let username = loginUsername.value;
   let password = loginPassword.value;
 
-  // console.log("useeee", username)
-  // console.log("passsssss", password)
   let splitUsername = username.split(/(\d+)/);
 
   if(password === 'travel' && splitUsername[0] === 'traveler' && splitUsername[1] > 0 && splitUsername[1] < 51) {
@@ -60,11 +57,6 @@ const checkLogin = (event) => {
     alert(`Invalid username and/or password`)
   }
 }
-
-loginForm.addEventListener('submit', checkLogin);
-
-
-
 
 const displayAllTripTypes = (travelerSpecificTripData) => {
   vacations = new Destination(allDestinationsData);
@@ -253,6 +245,7 @@ const displayEverything = () => {
 
 
 //EVENT LISTENERS
+loginForm.addEventListener('submit', checkLogin);
 window.addEventListener('load', displayEverything);
 bookTripBtn.addEventListener('click', function(event) {
   event.preventDefault()
