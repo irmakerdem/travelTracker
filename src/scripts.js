@@ -53,6 +53,7 @@ const checkLogin = (event) => {
   if(password === 'travel' && splitUsername[0] === 'traveler' && splitUsername[1] > 0 && splitUsername[1] < 51) {
     loginForm.classList.add('hidden');
     mainpage.classList.remove('hidden');
+    displayEverything(splitUsername[1]);
   } else {
     alert(`Invalid username and/or password`)
   }
@@ -217,7 +218,7 @@ const displayPresentTrips = (matchingDestinations) => {
   presentTripsBox.innerHTML = presentHTML;
 }
 
-const displayEverything = () => {
+const displayEverything = (id) => {
   Promise.all(
     [allTravelPromises, allTripsPromises, allDestinationsPromises]
   )
@@ -229,8 +230,9 @@ const displayEverything = () => {
     populateDestinationDropDown(allDestinationsData);
     
     const travelerData = allTravelersData.find((traveler) => {
-      return traveler.id === 12
-      // return traveler.id === Math.ceil(Math.random() *50) 
+      console.log(typeof id)
+      console.log(traveler)
+      return traveler.id === Number(id)
     });
  
     traveler = new Traveler(travelerData);
@@ -246,7 +248,6 @@ const displayEverything = () => {
 
 //EVENT LISTENERS
 loginForm.addEventListener('submit', checkLogin);
-window.addEventListener('load', displayEverything);
 bookTripBtn.addEventListener('click', function(event) {
   event.preventDefault()
   postToTrips(event)
