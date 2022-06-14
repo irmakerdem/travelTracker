@@ -160,12 +160,12 @@ const displayPastTrips = (matchingDestinations) => {
     // console.log(trip)
    let matched = matchingDestinations.find(destination => trip.id === destination.tripId);
    pastHTML += `<div class="traveler-trip-card" id="${trip.id}">
-                    <img alt="${matched.alt}" src="${matched.image}" tabindex="0">
+                    <img tabindex="0" alt="${matched.alt}" src="${matched.image}">
                     <p tabindex="0">Destination: ${matched.name}</p>
                     <p tabindex="0">Start Date: ${trip.date}</p>
                     <p tabindex="0">Duration: ${trip.duration}</p>
                     <p tabindex="0">Travelers: ${trip.travelers}</p>
-                    <p id="trip-status" tabindex="0">Status: <b>${trip.status}</b></p>
+                    <p tabindex="0" id="trip-status">Status: <b>${trip.status}</b></p>
                   </div><br>`
   });
   pastTripsBox.innerHTML = pastHTML;
@@ -178,12 +178,12 @@ const displayUpcomingTrips = (matchingDestinations) => {
     // console.log(trip)
     let matched = matchingDestinations.find(destination => trip.id === destination.tripId);
     upcomingHTML += `<div class="traveler-trip-card" id="${trip.id}">
-                    <img alt="${matched.alt}" src="${matched.image}">
-                    <p>Destination: ${matched.name}</p>
-                    <p>Start Date: ${trip.date}</p>
-                    <p>Duration: ${trip.duration}</p>
-                    <p>Travelers: ${trip.travelers}</p>
-                    <p id="trip-status">Status: <b>${trip.status}</b></p>
+                    <img tabindex="0" alt="${matched.alt}" src="${matched.image}">
+                    <p tabindex="0">Destination: ${matched.name}</p>
+                    <p tabindex="0">Start Date: ${trip.date}</p>
+                    <p tabindex="0">Duration: ${trip.duration}</p>
+                    <p tabindex="0">Travelers: ${trip.travelers}</p>
+                    <p tabindex="0" id="trip-status">Status: <b>${trip.status}</b></p>
                   </div><br>`
   });
   upcomingTripsBox.innerHTML = upcomingHTML;
@@ -196,12 +196,12 @@ const displayPendingTrips = (matchingDestinations) => {
     // console.log(trip)
     let matched = matchingDestinations.find(destination => trip.id === destination.tripId);
     pendingHTML += `<div class="traveler-trip-card" id="${trip.id}">
-                    <img alt="${matched.alt}" src="${matched.image}">
-                    <p>Destination: ${matched.name}</p>
-                    <p>Start Date: ${trip.date}</p>
-                    <p>Duration: ${trip.duration}</p>
-                    <p>Travelers: ${trip.travelers}</p>
-                    <p id="trip-status">Status: <b>${trip.status}</b></p>
+                    <img tabindex="0" alt="${matched.alt}" src="${matched.image}">
+                    <p tabindex="0">Destination: ${matched.name}</p>
+                    <p tabindex="0">Start Date: ${trip.date}</p>
+                    <p tabindex="0">Duration: ${trip.duration}</p>
+                    <p tabindex="0">Travelers: ${trip.travelers}</p>
+                    <p tabindex="0" id="trip-status">Status: <b>${trip.status}</b></p>
                   </div><br>`
   });
   pendingTripsBox.innerHTML = pendingHTML;
@@ -215,12 +215,12 @@ const displayPresentTrips = (matchingDestinations) => {
     // console.log(trip)
     let matched = matchingDestinations.find(destination => trip.id === destination.tripId);
     presentHTML += `<div class="traveler-trip-card" id="${trip.id}">
-                    <img alt="${matched.alt}" src="${matched.image}">
-                    <p>Destination: ${matched.name}</p>
-                    <p>Start Date: ${trip.date}</p>
-                    <p>Duration: ${trip.duration}</p>
-                    <p>Travelers: ${trip.travelers}</p>
-                    <p id="trip-status">Status: <b>${trip.status}</b></p>
+                    <img tabindex="0" alt="${matched.alt}" src="${matched.image}">
+                    <p tabindex="0">Destination: ${matched.name}</p>
+                    <p tabindex="0">Start Date: ${trip.date}</p>
+                    <p tabindex="0">Duration: ${trip.duration}</p>
+                    <p tabindex="0">Travelers: ${trip.travelers}</p>
+                    <p tabindex="0" id="trip-status">Status: <b>${trip.status}</b></p>
                   </div><br>`
   });
   presentTripsBox.innerHTML = presentHTML;
