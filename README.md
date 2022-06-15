@@ -64,6 +64,7 @@ Travel Tracker ✈️ is an app allowing the traveler/user to sign in and see th
 - Add a travel agent login page, dashboard, ability to interact with traveler dashboard, and ability to add new destinations
 - Display a countdown for the next trip
 - Add error handling to prevent user from posting negative number of days and travelers
+- Allow user to edit already pending trip and resend
 
 ### Reflection
 - This project taught me a lot about how many native features of HTML exist that allow the page to look modern! Utilizing required attributes made it very easy for error handling instead of creating error messages myself. The form and input elements along with the family font simplified the task for creating a 👸 beautiful UI.
