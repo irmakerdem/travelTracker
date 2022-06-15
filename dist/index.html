@@ -8,6 +8,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,700;1,400&display=swap"
     rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,500&display=swap"
+    rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Travel Tracker</title>
 </head>
@@ -16,10 +21,17 @@
   <div class="pd-login-wrapper">
     <form class="login-form">
       <h3 class="login-header" tabindex="0">Travel Tracker - Login</h3>
-      <label tabindex="0" class="login-input" for="usernameInput">Username:</label><br>
-      <input class="login-input" id="usernameInput" type="text" placeholder="username" required /><br><br>
-      <label tabindex="0" class="login-input" for="passwordInput">Password:</label><br>
-      <input class="login-input" id="passwordInput" type="password" placeholder="password" required /><br><br>
+
+      <div class="pd-form-input-wrapper">
+        <label tabindex="0" class="login-input" for="usernameInput">Username:</label>
+        <input class="login-input" id="usernameInput" type="text" placeholder="username" required />
+      </div>
+
+      <div class="pd-form-input-wrapper">
+        <label tabindex="0" class="login-input" for="passwordInput">Password:</label>
+        <input class="login-input" id="passwordInput" type="password" placeholder="password" required />
+      </div>
+
       <button class="login-submit-btn">Submit</button>
     </form>
   </div>
