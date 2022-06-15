@@ -21,6 +21,7 @@ let vacations;
 let loginForm = document.querySelector('.login-form');
 let loginUsername = document.querySelector('#usernameInput');
 let loginPassword = document.querySelector('#passwordInput');
+let errorMessage = document.querySelector('.error-message');
 
 let pastTripsBox = document.querySelector('.past-trips-container');
 let presentTripsBox = document.querySelector('.present-trips-container');
@@ -55,7 +56,7 @@ const checkLogin = (event) => {
     mainpage.classList.remove('hidden');
     displayEverything(splitUsername[1]);
   } else {
-    alert(`Invalid username and/or password`)
+    errorMessage.innerHTML = `Invalid username and/or password`
   }
 }
 
@@ -160,11 +161,11 @@ const displayPastTrips = (matchingDestinations) => {
    let matched = matchingDestinations.find(destination => trip.id === destination.tripId);
    pastHTML += `<div class="traveler-trip-card" id="${trip.id}">
                   <img alt="${matched.alt}" src="${matched.image}">
-                  <p>Destination: ${matched.name}</p>
-                  <p>Start Date: ${trip.date}</p>
-                  <p>Duration: ${trip.duration}</p>
-                  <p>Travelers: ${trip.travelers}</p>
-                  <p id="trip-status">Status: <i>${trip.status}</i></p>
+                  <p><b>Destination: </b>${matched.name}</p>
+                  <p><b>Start Date: </b>${trip.date}</p>
+                  <p><b>Duration: </b>${trip.duration}</p>
+                  <p><b>Travelers: </b>${trip.travelers}</p>
+                  <p id="trip-status"><b>Status: </b><i>${trip.status}</i></p>
                 </div><br>`
   });
   pastTripsBox.innerHTML = pastHTML;
@@ -176,11 +177,11 @@ const displayUpcomingTrips = (matchingDestinations) => {
     let matched = matchingDestinations.find(destination => trip.id === destination.tripId);
     upcomingHTML += `<div class="traveler-trip-card" id="${trip.id}">
                       <img alt="${matched.alt}" src="${matched.image}">
-                      <p>Destination: ${matched.name}</p>
-                      <p>Start Date: ${trip.date}</p>
-                      <p>Duration: ${trip.duration}</p>
-                      <p>Travelers: ${trip.travelers}</p>
-                      <p id="trip-status">Status: <i>${trip.status}</i></p>
+                      <p><b>Destination: </b>${matched.name}</p>
+                      <p><b>Start Date: </b>${trip.date}</p>
+                      <p><b>Duration: </b>${trip.duration}</p>
+                      <p><b>Travelers: </b>${trip.travelers}</p>
+                      <p id="trip-status"><b>Status: </b><i>${trip.status}</i></p>
                     </div><br>`
   });
   upcomingTripsBox.innerHTML = upcomingHTML;
@@ -192,11 +193,11 @@ const displayPendingTrips = (matchingDestinations) => {
     let matched = matchingDestinations.find(destination => trip.id === destination.tripId);
     pendingHTML += `<div class="traveler-trip-card" id="${trip.id}">
                       <img alt="${matched.alt}" src="${matched.image}">
-                      <p>Destination: ${matched.name}</p>
-                      <p>Start Date: ${trip.date}</p>
-                      <p>Duration: ${trip.duration}</p>
-                      <p>Travelers: ${trip.travelers}</p>
-                      <p id="trip-status">Status: <i>${trip.status}</i></p>
+                      <p><b>Destination: </b>${matched.name}</p>
+                      <p><b>Start Date: </b>${trip.date}</p>
+                      <p><b>Duration: </b>${trip.duration}</p>
+                      <p><b>Travelers: </b>${trip.travelers}</p>
+                      <p id="trip-status"><b>Status: </b><i>${trip.status}</i></p>
                     </div><br>`
   });
   pendingTripsBox.innerHTML = pendingHTML;
@@ -208,11 +209,11 @@ const displayPresentTrips = (matchingDestinations) => {
     let matched = matchingDestinations.find(destination => trip.id === destination.tripId);
     presentHTML += `<div class="traveler-trip-card" id="${trip.id}">
                       <img alt="${matched.alt}" src="${matched.image}">
-                      <p>Destination: ${matched.name}</p>
-                      <p>Start Date: ${trip.date}</p>
-                      <p>Duration: ${trip.duration}</p>
-                      <p>Travelers: ${trip.travelers}</p>
-                      <p id="trip-status">Status: <i>${trip.status}</i></p>
+                      <p><b>Destination: </b>${matched.name}</p>
+                      <p><b>Start Date: </b>${trip.date}</p>
+                      <p><b>Duration: </b>${trip.duration}</p>
+                      <p><b>Travelers: </b>${trip.travelers}</p>
+                      <p id="trip-status"><b>Status: </b><i>${trip.status}</i></p>
                     </div><br>`
   });
   presentTripsBox.innerHTML = presentHTML;
