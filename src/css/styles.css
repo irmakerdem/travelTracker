@@ -2,13 +2,29 @@
   font-family: 'Roboto', sans-serif;
   /* border: solid red 2px; */
   text-align: center;
+  color: white;
+}
+
+input, button, select {
+  color: black;
+}
+
+button {
+  background-color: rgb(175, 178, 177);
+  border-radius: 5px;
+  border: none;
+}
+
+button:hover {
+  background-color: rgb(60, 220, 167);
+  border-radius: 5px;
 }
 
 body {
   background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
 }
 
-.trip-card-image, .cappadocia, img {
+.trip-card-image, img {
   height: 90%;
   width: 90%;
 }
@@ -55,6 +71,15 @@ h5 {
 
 .login-form {
   margin-top: 15%;
+}
+
+.error-message {
+  color: white;
+}
+
+.money, .yearly-expense {
+  color:rgb(115, 245, 202);
+  font-weight: bold;
 }
 
 .hidden {

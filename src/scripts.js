@@ -21,6 +21,7 @@ let vacations;
 let loginForm = document.querySelector('.login-form');
 let loginUsername = document.querySelector('#usernameInput');
 let loginPassword = document.querySelector('#passwordInput');
+let errorMessage = document.querySelector('.error-message');
 
 let pastTripsBox = document.querySelector('.past-trips-container');
 let presentTripsBox = document.querySelector('.present-trips-container');
@@ -55,7 +56,7 @@ const checkLogin = (event) => {
     mainpage.classList.remove('hidden');
     displayEverything(splitUsername[1]);
   } else {
-    alert(`Invalid username and/or password`)
+    errorMessage.innerHTML = `Invalid username and/or password`
   }
 }
 
@@ -142,8 +143,8 @@ const displayTripCostEstimate = (event) => {
 
   let obtainSingleCost = trip.getSingleTripCost(vacations.data, travelerLocationId.id, getFormDays, getFormTravelers);
 
-  tripEstimate.innerHTML = `Trip Request's Estimate is $${obtainSingleCost}*<br>
-  <span tabindex="0" class="asterisk-statement">*including 10% travel agent fee</span>`;
+  tripEstimate.innerHTML = `Trip Request's Estimate is $<span class="money">${obtainSingleCost}</span>*<br>
+  <span class="asterisk-statement">*including 10% travel agent fee</span>`;
 }
 
 const displayYearlyExpense = () => {
@@ -159,12 +160,12 @@ const displayPastTrips = (matchingDestinations) => {
   traveler.getPastTrips().forEach((trip) => {
    let matched = matchingDestinations.find(destination => trip.id === destination.tripId);
    pastHTML += `<div class="traveler-trip-card" id="${trip.id}">
-                  <img tabindex="0" alt="${matched.alt}" src="${matched.image}">
-                  <p tabindex="0">Destination: ${matched.name}</p>
-                  <p tabindex="0">Start Date: ${trip.date}</p>
-                  <p tabindex="0">Duration: ${trip.duration}</p>
-                  <p tabindex="0">Travelers: ${trip.travelers}</p>
-                  <p tabindex="0" id="trip-status">Status: <i>${trip.status}</i></p>
+                  <img alt="${matched.alt}" src="${matched.image}">
+                  <p><b>Destination: </b>${matched.name}</p>
+                  <p><b>Start Date: </b>${trip.date}</p>
+                  <p><b>Duration: </b>${trip.duration}</p>
+                  <p><b>Travelers: </b>${trip.travelers}</p>
+                  <p id="trip-status"><b>Status: </b><i>${trip.status}</i></p>
                 </div><br>`
   });
   pastTripsBox.innerHTML = pastHTML;
@@ -175,12 +176,12 @@ const displayUpcomingTrips = (matchingDestinations) => {
   traveler.getUpcomingTrips().forEach((trip) => {
     let matched = matchingDestinations.find(destination => trip.id === destination.tripId);
     upcomingHTML += `<div class="traveler-trip-card" id="${trip.id}">
-                      <img tabindex="0" alt="${matched.alt}" src="${matched.image}">
-                      <p tabindex="0">Destination: ${matched.name}</p>
-                      <p tabindex="0">Start Date: ${trip.date}</p>
-                      <p tabindex="0">Duration: ${trip.duration}</p>
-                      <p tabindex="0">Travelers: ${trip.travelers}</p>
-                      <p tabindex="0" id="trip-status">Status: <i>${trip.status}</i></p>
+                      <img alt="${matched.alt}" src="${matched.image}">
+                      <p><b>Destination: </b>${matched.name}</p>
+                      <p><b>Start Date: </b>${trip.date}</p>
+                      <p><b>Duration: </b>${trip.duration}</p>
+                      <p><b>Travelers: </b>${trip.travelers}</p>
+                      <p id="trip-status"><b>Status: </b><i>${trip.status}</i></p>
                     </div><br>`
   });
   upcomingTripsBox.innerHTML = upcomingHTML;
@@ -191,12 +192,12 @@ const displayPendingTrips = (matchingDestinations) => {
   traveler.getPendingTrips().forEach((trip) => {
     let matched = matchingDestinations.find(destination => trip.id === destination.tripId);
     pendingHTML += `<div class="traveler-trip-card" id="${trip.id}">
-                      <img tabindex="0" alt="${matched.alt}" src="${matched.image}">
-                      <p tabindex="0">Destination: ${matched.name}</p>
-                      <p tabindex="0">Start Date: ${trip.date}</p>
-                      <p tabindex="0">Duration: ${trip.duration}</p>
-                      <p tabindex="0">Travelers: ${trip.travelers}</p>
-                      <p tabindex="0" id="trip-status">Status: <i>${trip.status}</i></p>
+                      <img alt="${matched.alt}" src="${matched.image}">
+                      <p><b>Destination: </b>${matched.name}</p>
+                      <p><b>Start Date: </b>${trip.date}</p>
+                      <p><b>Duration: </b>${trip.duration}</p>
+                      <p><b>Travelers: </b>${trip.travelers}</p>
+                      <p id="trip-status"><b>Status: </b><i>${trip.status}</i></p>
                     </div><br>`
   });
   pendingTripsBox.innerHTML = pendingHTML;
@@ -207,12 +208,12 @@ const displayPresentTrips = (matchingDestinations) => {
   traveler.getPresentTrips().forEach((trip) => {
     let matched = matchingDestinations.find(destination => trip.id === destination.tripId);
     presentHTML += `<div class="traveler-trip-card" id="${trip.id}">
-                      <img tabindex="0" alt="${matched.alt}" src="${matched.image}">
-                      <p tabindex="0">Destination: ${matched.name}</p>
-                      <p tabindex="0">Start Date: ${trip.date}</p>
-                      <p tabindex="0">Duration: ${trip.duration}</p>
-                      <p tabindex="0">Travelers: ${trip.travelers}</p>
-                      <p tabindex="0" id="trip-status">Status: <i>${trip.status}</i></p>
+                      <img alt="${matched.alt}" src="${matched.image}">
+                      <p><b>Destination: </b>${matched.name}</p>
+                      <p><b>Start Date: </b>${trip.date}</p>
+                      <p><b>Duration: </b>${trip.duration}</p>
+                      <p><b>Travelers: </b>${trip.travelers}</p>
+                      <p id="trip-status"><b>Status: </b><i>${trip.status}</i></p>
                     </div><br>`
   });
   presentTripsBox.innerHTML = presentHTML;
@@ -252,16 +253,19 @@ const resetForm = () => {
   bookTripBtn.classList.add('hidden');
   getEstimateBtn.classList.remove('hidden');
 
-  tripEstimate.innerHTML = `Trip Request's Estimate is $0*<br>
+  tripEstimate.innerHTML = `Trip Request's Estimate is $<span class="money">0</span>*<br>
   <span class="asterisk-statement" tabindex="0">*including 10% travel agent fee</span>`;
 }
 
 
 //EVENT LISTENERS
 loginForm.addEventListener('submit', checkLogin);
-bookTripBtn.addEventListener('click', function(event) {
+bookTripBtn.addEventListener('click', (event) => {
   event.preventDefault()
   postToTrips(event)
   resetForm()
 });
-getEstimateBtn.addEventListener('click', displayTripCostEstimate);
+getEstimateBtn.addEventListener('click', (event) => {
+  event.preventDefault()
+  displayTripCostEstimate(event)
+})
