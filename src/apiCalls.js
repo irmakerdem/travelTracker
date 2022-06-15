@@ -22,6 +22,7 @@ let apiPostTrip = (tripObjectToPost) => {
     body: JSON.stringify(tripObjectToPost)
   })
   .then(response => response.json())
+  .catch(error => errorMessage.innerText = '🤡 OOOPSIES! 🤨 There was an error. Please try again. 🤡 ');
 };
 
 export {allTravelPromises, allTripsPromises, allDestinationsPromises, apiPostTrip}
