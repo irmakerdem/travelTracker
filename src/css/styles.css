@@ -77,6 +77,11 @@ h5 {
   color: white;
 }
 
+.money, .yearly-expense {
+  color:rgb(115, 245, 202);
+  font-weight: bold;
+}
+
 .hidden {
   display: none;
 }

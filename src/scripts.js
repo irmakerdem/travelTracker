@@ -143,7 +143,7 @@ const displayTripCostEstimate = (event) => {
 
   let obtainSingleCost = trip.getSingleTripCost(vacations.data, travelerLocationId.id, getFormDays, getFormTravelers);
 
-  tripEstimate.innerHTML = `Trip Request's Estimate is $${obtainSingleCost}*<br>
+  tripEstimate.innerHTML = `Trip Request's Estimate is $<span class="money">${obtainSingleCost}</span>*<br>
   <span class="asterisk-statement">*including 10% travel agent fee</span>`;
 }
 
@@ -253,7 +253,7 @@ const resetForm = () => {
   bookTripBtn.classList.add('hidden');
   getEstimateBtn.classList.remove('hidden');
 
-  tripEstimate.innerHTML = `Trip Request's Estimate is $0*<br>
+  tripEstimate.innerHTML = `Trip Request's Estimate is $<span class="money">0</span>*<br>
   <span class="asterisk-statement" tabindex="0">*including 10% travel agent fee</span>`;
 }
 
