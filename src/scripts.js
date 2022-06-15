@@ -230,8 +230,6 @@ const displayEverything = (id) => {
     populateDestinationDropDown(allDestinationsData);
     
     const travelerData = allTravelersData.find((traveler) => {
-      console.log(typeof id)
-      console.log(traveler)
       return traveler.id === Number(id)
     });
  
