@@ -143,7 +143,7 @@ const displayTripCostEstimate = (event) => {
   let obtainSingleCost = trip.getSingleTripCost(vacations.data, travelerLocationId.id, getFormDays, getFormTravelers);
 
   tripEstimate.innerHTML = `Trip Request's Estimate is $${obtainSingleCost}*<br>
-  <span tabindex="0">*including 10% travel agent fee</span>`;
+  <span tabindex="0" class="asterisk-statement">*including 10% travel agent fee</span>`;
 }
 
 const displayYearlyExpense = () => {
@@ -243,11 +243,25 @@ const displayEverything = (id) => {
   })
 }
 
+const resetForm = () => {
+  formDestinations.value = "choose";
+  formTravelers.value = "";
+  formDays.value = "";
+  formDate.value = "";
+
+  bookTripBtn.classList.add('hidden');
+  getEstimateBtn.classList.remove('hidden');
+
+  tripEstimate.innerHTML = `Trip Request's Estimate is $0*<br>
+  <span class="asterisk-statement" tabindex="0">*including 10% travel agent fee</span>`;
+}
+
 
 //EVENT LISTENERS
 loginForm.addEventListener('submit', checkLogin);
 bookTripBtn.addEventListener('click', function(event) {
   event.preventDefault()
   postToTrips(event)
+  resetForm()
 });
 getEstimateBtn.addEventListener('click', displayTripCostEstimate);
