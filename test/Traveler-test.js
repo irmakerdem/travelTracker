@@ -1,8 +1,10 @@
 import { expect } from 'chai';
+import tripData from '../test-data/trip-data';
 import Traveler from '../src/Traveler';
+import travelerData from '../test-data/traveler-data';
 
 describe('Traveler', () => {
-  let traveler1, traveler2, traveler3;
+  let traveler, traveler1, traveler2, traveler3;
   let testTraveler1Data, testTraveler2Data, testTraveler3Data;
 
   beforeEach(() => {
@@ -21,6 +23,7 @@ describe('Traveler', () => {
       "name": "Lurlene Raisbeck",
       "travelerType": "photographer"
     };
+    traveler = new Traveler(travelerData);
     traveler1 = new Traveler(testTraveler1Data);
     traveler2 = new Traveler(testTraveler2Data);
     traveler3 = new Traveler(testTraveler3Data);
@@ -35,12 +38,6 @@ describe('Traveler', () => {
     expect(traveler1).to.be.an.instanceof(Traveler);
     expect(traveler2).to.be.an.instanceof(Traveler);
     expect(traveler3).to.be.an.instanceof(Traveler);
-  });
-
-  it('should be able to get traveler\'s first name', function () {
-    expect(traveler1.getTravelerFirstName()).to.equal('Natalee');
-    expect(traveler2.getTravelerFirstName()).to.equal('Sibby');
-    expect(traveler3.getTravelerFirstName()).to.equal('Lurlene');
   });
 
   it('should be able to store traveler\'s id', () => {
@@ -74,6 +71,116 @@ describe('Traveler', () => {
 
     expect(traveler3.travelerType).to.be.a('string');
     expect(traveler3.travelerType).to.equal('photographer');
+  });
+
+  it('should store all trips for a traveler', () => {
+    expect(traveler1.allTrips).to.be.an('array');
+    expect(traveler1.allTrips).to.deep.equal([]);
+  });
+
+  it('should be able to get traveler\'s first name', function () {
+    expect(traveler1.getTravelerFirstName()).to.equal('Natalee');
+    expect(traveler2.getTravelerFirstName()).to.equal('Sibby');
+    expect(traveler3.getTravelerFirstName()).to.equal('Lurlene');
+  });
+
+  it('should be able to get trips for a single traveler', () => {
+    let singleTravelersTrips = traveler1.getTravelerSpecificTripData(tripData);
+
+    expect(tripData).to.be.an('array');
+    expect(singleTravelersTrips).to.be.an('array');
+    expect(singleTravelersTrips).to.deep.equal([
+      {
+        "date": "2022/07/23",
+        "destinationID": 50,
+        "duration": 17,
+        "id": 10,
+        "status": "approved",
+        "suggestedActivities": [],
+        "travelers": 6,
+        "userID": 9,
+      },
+      {
+        "date": "2020/03/05",
+        "destinationID": 31,
+        "duration": 13,
+        "id": 74,
+        "status": "approved",
+        "suggestedActivities": [],
+        "travelers": 5,
+        "userID": 9,
+      },
+      {
+        "date": "2020/05/29",
+        "destinationID": 16,
+        "duration": 16,
+        "id": 95,
+        "status": "approved",
+        "suggestedActivities": [],
+        "travelers": 4,
+        "userID": 9,
+      },
+      {
+        "date": "2019/08/09",
+        "destinationID": 14,
+        "duration": 10,
+        "id": 105,
+        "status": "approved",
+        "suggestedActivities": [],
+        "travelers": 2,
+        "userID": 9,
+      },
+      {
+        "date": "2020/06/08",
+        "destinationID": 34,
+        "duration": 17,
+        "id": 106,
+        "status": "approved",
+        "suggestedActivities": [],
+        "travelers": 5,
+        "userID": 9,
+      },
+      {
+        "date": "2021/01/15",
+        "destinationID": 45,
+        "duration": 5,
+        "id": 182,
+        "status": "approved",
+        "suggestedActivities": [],
+        "travelers": 6,
+        "userID": 9,
+      }
+    ]);
+  });
+
+  it('should start be able to format the date', () => {
+    let day = new Date();
+
+    expect(traveler.formatDate(day)).to.be.a('string');
+  });
+ 
+  it('should be able to get past trips', () => { 
+    traveler.getPastTrips();
+
+    expect(traveler).to.have.property('pastTrips');
+  });
+
+  it('should be able to get upcoming trips', () => { 
+    traveler.getUpcomingTrips();
+
+    expect(traveler).to.have.property('upcomingTrips');
+  });
+
+  it('should be able to get pending trips', () => { 
+    traveler.getPendingTrips();
+
+    expect(traveler).to.have.property('pendingTrips');
+  });
+
+  it('should be able to get present trips', () => { 
+    traveler.getPresentTrips();
+
+    expect(traveler).to.have.property('presentTrips');
   });
 
 });

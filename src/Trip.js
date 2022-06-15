@@ -21,7 +21,6 @@ class Trip {
 
     const yearlyExpenses = travelerSpecificTrips.reduce((total, trip) => {
       let getDestinations = allDestinations.find(destination => trip.destinationID === destination.id);
-
       if(trip.date.includes(currentYear)) {
         let lodgingCost = getDestinations.estimatedLodgingCostPerDay * trip.duration;
         let flightCost = getDestinations.estimatedFlightCostPerPerson * trip.travelers;
