@@ -6,6 +6,7 @@
 
 body {
   background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+  margin: 0;
 }
 
 .trip-card-image, .cappadocia, img {
@@ -59,4 +60,28 @@ h5 {
 
 .hidden {
   display: none;
+}
+
+/* modifications */
+.pd-login-wrapper{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.login-form{
+  margin-top: 0;
+}
+
+
+
+.login-header{
+  color: #222222;
+  font-size: 1.5em;
+}
+
+.login-form input{
+
 }
