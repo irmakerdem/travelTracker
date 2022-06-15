@@ -1,105 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,700;1,400&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Tracker</title>
-  </head> 
-  <body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,500&display=swap"
+    rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Tracker</title>
+</head>
+
+<body>
+  <div class="pd-login-wrapper">
     <form class="login-form">
       <h3 class="login-header" tabindex="0">Travel Tracker - Login</h3>
-      <label tabindex="0" class="login-input" for="usernameInput">Username:</label><br>
-      <input class="login-input" id="usernameInput" type="text" placeholder="username" required/><br><br>
-      <label tabindex="0" class="login-input" for="passwordInput">Password:</label><br>
-      <input class="login-input" id="passwordInput" type="password" placeholder="password" required/><br><br>
+
+      <div class="pd-form-input-wrapper">
+        <label tabindex="0" class="login-input" for="usernameInput">Username:</label>
+        <input class="login-input" id="usernameInput" type="text" placeholder="username" required />
+      </div>
+
+      <div class="pd-form-input-wrapper">
+        <label tabindex="0" class="login-input" for="passwordInput">Password:</label>
+        <input class="login-input" id="passwordInput" type="password" placeholder="password" required />
+      </div>
+
       <button class="login-submit-btn">Submit</button>
     </form>
-    <main class="main-page hidden">
-      <h1 tabindex="0">Travel Tracker</h1>
-      <p class="error-message"></p>
-      <img tabindex="0" class="logo" src="./images/world-travel-logo.png" alt="plane traveling globe logo">
-      <h2 tabindex="0">Welcome, <span class="traveler-name">name</span>!</h2>
-      <h3 tabindex="0">🤑 You've spent $<span class="yearly-expense"></span> this year 🤑</h3>
-      <form class="form">
-        <br>
-        <h4 tabindex="0">MAKE A TRIP REQUEST</h4><br>
-        <label class="form-info" for="formDate" tabindex="0">Date:</label><br>
-        <input class="form-info" id="formDate" type="date" placeholder="dd/mm/yyyy" required/><br>
-        <label class="form-info" for="formDays" tabindex="0">Number of Days:</label><br>
-        <input class="form-info" id="formDays" type="number" placeholder="0" required/><br>
-        <label class="form-info" for="formTravelers" tabindex="0">Number of Travelers:</label><br>
-        <input class="form-info" id="formTravelers" type="number" placeholder="0" required/><br>
-        <label class="form-info" for="formDestinations" tabindex="0">Destination:</label><br>
-        <select class="form-info" id="formDestinations" required>
-        </select><br><br>
-        <button class="get-estimate-btn">Get Estimate</button>
-        <button class="book-trip-btn hidden">Book Trip</button>
-      </form>
-      <p class="trip-estimate" tabindex="0">Trip Request's Estimate is $0*<br>
-        <span class="asterisk-statement">*including 10% travel agent fee</span>
-      </p>
-      <section>
-        <h5 tabindex="0">YOUR TRIPS</h5>
-          <div class="trips-container">
-            <div class="column">
-              <p class="trip-type" tabindex="0">Past Trips</p>
-              <section class="past-trips-container">
-                <div class="traveler-trip-card">
-                  <img class="trip-card-image" src="" alt="">
-                  <p>Destination: </p>
-                  <p>Start Date: </p>
-                  <p>Duration: </p>
-                  <p>Travelers: </p>
-                  <p id="trip-status">Status: </p>
-                </div>
-              </section>
+  </div>
+  <main class="main-page hidden">
+    <h1 tabindex="0">Travel Tracker</h1>
+    <p class="error-message"></p>
+    <img tabindex="0" class="logo" src="./images/world-travel-logo.png" alt="plane traveling globe logo">
+    <h2 tabindex="0">Welcome, <span class="traveler-name">name</span>!</h2>
+    <h3 tabindex="0">🤑 You've spent $<span class="yearly-expense"></span> this year 🤑</h3>
+    <form class="form">
+      <br>
+      <h4 tabindex="0">MAKE A TRIP REQUEST</h4><br>
+      <label class="form-info" for="formDate" tabindex="0">Date:</label><br>
+      <input class="form-info" id="formDate" type="date" placeholder="dd/mm/yyyy" required /><br>
+      <label class="form-info" for="formDays" tabindex="0">Number of Days:</label><br>
+      <input class="form-info" id="formDays" type="number" placeholder="0" required /><br>
+      <label class="form-info" for="formTravelers" tabindex="0">Number of Travelers:</label><br>
+      <input class="form-info" id="formTravelers" type="number" placeholder="0" required /><br>
+      <label class="form-info" for="formDestinations" tabindex="0">Destination:</label><br>
+      <select class="form-info" id="formDestinations" required>
+      </select><br><br>
+      <button class="get-estimate-btn">Get Estimate</button>
+      <button class="book-trip-btn hidden">Book Trip</button>
+    </form>
+    <p class="trip-estimate" tabindex="0">Trip Request's Estimate is $0*<br>
+      <span class="asterisk-statement">*including 10% travel agent fee</span>
+    </p>
+    <section>
+      <h5 tabindex="0">YOUR TRIPS</h5>
+      <div class="trips-container">
+        <div class="column">
+          <p class="trip-type" tabindex="0">Past Trips</p>
+          <section class="past-trips-container">
+            <div class="traveler-trip-card">
+              <img class="trip-card-image" src="" alt="">
+              <p>Destination: </p>
+              <p>Start Date: </p>
+              <p>Duration: </p>
+              <p>Travelers: </p>
+              <p id="trip-status">Status: </p>
             </div>
-            <div class="column">
-              <p class="trip-type" tabindex="0">Present Trips</p>
-              <section class="present-trips-container">
-                <div class="traveler-trip-card">
-                  <img class="trip-card-image" src="" alt="">
-                  <p>Destination: </p>
-                  <p>Start Date: </p>
-                  <p>Duration: </p>
-                  <p>Travelers: </p>
-                  <p id="trip-status">Status: </p>
-                </div>
-              </section>
+          </section>
+        </div>
+        <div class="column">
+          <p class="trip-type" tabindex="0">Present Trips</p>
+          <section class="present-trips-container">
+            <div class="traveler-trip-card">
+              <img class="trip-card-image" src="" alt="">
+              <p>Destination: </p>
+              <p>Start Date: </p>
+              <p>Duration: </p>
+              <p>Travelers: </p>
+              <p id="trip-status">Status: </p>
             </div>
-            <div class="column">
-              <p class="trip-type" tabindex="0">Upcoming Trips</p>
-              <section class="upcoming-trips-container">
-                <div class="traveler-trip-card">
-                  <img class="trip-card-image" src="" alt="">
-                  <p>Destination: </p>
-                  <p>Start Date: </p>
-                  <p>Duration: </p>
-                  <p>Travelers: </p>
-                  <p id="trip-status">Status: </p>
-                </div>
-              </section>
+          </section>
+        </div>
+        <div class="column">
+          <p class="trip-type" tabindex="0">Upcoming Trips</p>
+          <section class="upcoming-trips-container">
+            <div class="traveler-trip-card">
+              <img class="trip-card-image" src="" alt="">
+              <p>Destination: </p>
+              <p>Start Date: </p>
+              <p>Duration: </p>
+              <p>Travelers: </p>
+              <p id="trip-status">Status: </p>
             </div>
-            <div class="column">
-              <p class="trip-type" tabindex="0">Pending Trips</p>
-              <section class="pending-trips-container">
-                <div class="traveler-trip-card">
-                  <img class="trip-card-image" src="" alt="">
-                  <p>Destination: </p>
-                  <p>Start Date: </p>
-                  <p>Duration: </p>
-                  <p>Travelers: </p>
-                  <p id="trip-status">Status: </p>
-                </div>
-              </section>
+          </section>
+        </div>
+        <div class="column">
+          <p class="trip-type" tabindex="0">Pending Trips</p>
+          <section class="pending-trips-container">
+            <div class="traveler-trip-card">
+              <img class="trip-card-image" src="" alt="">
+              <p>Destination: </p>
+              <p>Start Date: </p>
+              <p>Duration: </p>
+              <p>Travelers: </p>
+              <p id="trip-status">Status: </p>
             </div>
-          </div>
-      </section>
-    </main>
-    <script src="bundle.js"></script>
-  </body>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="bundle.js"></script>
+</body>
+
 </html>
