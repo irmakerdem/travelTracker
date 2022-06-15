@@ -35,15 +35,16 @@ Travel Tracker ✈️ is an app allowing the traveler/user to sign in and see th
 ![Travel Tracker gif](https://media.giphy.com/media/vhA6AzFigFfxUQcfg9/giphy.gif)
 
 - User can log in with a 🪪 username and 🤐 password
-<img width="1436" alt="login-image" src="https://user-images.githubusercontent.com/90080658/173740603-4651abfd-fce4-4d1a-8cc1-5833fd922bf8.png">
+<img width="600" alt="login-image" src="https://user-images.githubusercontent.com/90080658/173740603-4651abfd-fce4-4d1a-8cc1-5833fd922bf8.png">
 
 - When user enters invalid info, they are shown an error message ⛔️
 - User is welcomed 👋 with their name and how much 💸 they have spent on trips in the current year
 
-<img width="1412" alt="trips-image" src="https://user-images.githubusercontent.com/90080658/173740819-433e0fe4-2366-483f-836f-0342a1233279.png">
+<img width="600" alt="trips-image" src="https://user-images.githubusercontent.com/90080658/173740819-433e0fe4-2366-483f-836f-0342a1233279.png">
+
 - User can view their past, present, upcoming, and pending trips which are sorted in descending order ⏳
 
-<img width="1415" alt="trip-request-image" src="https://user-images.githubusercontent.com/90080658/173740878-c7021c3b-656c-4410-9490-50ff6b8522b3.png">
+<img width="600" alt="trip-request-image" src="https://user-images.githubusercontent.com/90080658/173740878-c7021c3b-656c-4410-9490-50ff6b8522b3.png">
 
 - User can request a new trip based on their preferences 💁‍♀️ for when, how many days, how many travelers, and destination
 - When user does not enter all fields, they are shown an error message 🙊
