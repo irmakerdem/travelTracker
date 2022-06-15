@@ -208,8 +208,7 @@ const displayEverything = () => {
     populateDestinationDropDown(allDestinationsData);
     
     const travelerData = allTravelersData.find((traveler) => {
-      return traveler.id === 12
-      // return traveler.id === Math.ceil(Math.random() *50) 
+      return traveler.id === 47
     });
  
     traveler = new Traveler(travelerData);
