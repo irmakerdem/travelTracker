@@ -260,9 +260,12 @@ const resetForm = () => {
 
 //EVENT LISTENERS
 loginForm.addEventListener('submit', checkLogin);
-bookTripBtn.addEventListener('click', function(event) {
+bookTripBtn.addEventListener('click', (event) => {
   event.preventDefault()
   postToTrips(event)
   resetForm()
 });
-getEstimateBtn.addEventListener('click', displayTripCostEstimate);
+getEstimateBtn.addEventListener('click', (event) => {
+  event.preventDefault()
+  displayTripCostEstimate(event)
+})
